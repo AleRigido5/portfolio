@@ -79,7 +79,9 @@ export function ProjectGallery({
         <>
           <div
             key={project.id}
-            className="flex max-h-full w-full max-w-5xl animate-fade-up flex-col overflow-y-auto rounded-2xl border border-border bg-surface shadow-2xl motion-reduce:animate-none"
+            // Larghezza massima calcolata sull'altezza dello schermo: così l'immagine (16:10)
+            // occupa tutta la card e resta spazio per il testo sotto, senza bande ai lati
+            className="flex max-h-full w-full max-w-[min(64rem,calc((100dvh-16rem)*1.6))] min-w-[min(100%,28rem)] animate-fade-up flex-col overflow-y-auto rounded-2xl border border-border bg-surface shadow-2xl motion-reduce:animate-none"
           >
             <div className="relative shrink-0 bg-background">
               <Image
@@ -90,7 +92,7 @@ export function ProjectGallery({
                 sizes="(min-width: 1088px) 1024px, 100vw"
                 placeholder={project.cover.blurDataURL ? "blur" : "empty"}
                 blurDataURL={project.cover.blurDataURL ?? undefined}
-                className="mx-auto h-auto max-h-[62dvh] w-auto object-contain"
+                className="block h-auto w-full"
               />
             </div>
 
