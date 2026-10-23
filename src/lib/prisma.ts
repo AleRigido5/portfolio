@@ -1,24 +1,10 @@
 import "server-only"; // impedisce di importare il client in un Client Component
-import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 import { PrismaClient } from "@/generated/prisma/client";
+import { createDbAdapter } from "@/lib/db-adapter";
 
 function createPrismaClient() {
-  const databaseUrl = process.env.DATABASE_URL;
-  if (!databaseUrl) {
-    throw new Error("DATABASE_URL non configurata");
-  }
-
-  // Riusa lo stesso DATABASE_URL della CLI, scomponendolo per l'adapter
-  const url = new URL(databaseUrl);
-
-  const adapter = new PrismaMariaDb({
-    host: url.hostname,
-    port: Number(url.port || 3306),
-    user: decodeURIComponent(url.username),
-    password: decodeURIComponent(url.password),
-    database: url.pathname.slice(1),
-    connectionLimit: 5,
-  });
+  // Connessione (con SSL se configurato): vedi src/lib/db-adapter.ts
+  const adapter = createDbAdapter();
 
   return new PrismaClient({
     adapter,

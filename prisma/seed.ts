@@ -7,10 +7,10 @@
 // =============================================================
 
 import "dotenv/config";
-import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 import { PrismaClient } from "../src/generated/prisma/client";
+import { createDbAdapter } from "../src/lib/db-adapter";
 
-const adapter = new PrismaMariaDb(process.env.DATABASE_URL!);
+const adapter = createDbAdapter(); // stessa connessione dell'app (SSL incluso)
 const prisma = new PrismaClient({ adapter });
 
 // -------------------------------------------------------------
