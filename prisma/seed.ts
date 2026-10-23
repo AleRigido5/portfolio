@@ -93,7 +93,7 @@ const projects = [
     sortOrder: 3,
     completedAt: null,
     tech: ["nextjs", "react", "typescript", "tailwindcss", "prisma", "mysql"],
-    repoUrl: "https://github.com/tuo-utente/portfolio",
+    repoUrl: "https://github.com/AleRigido5/portfolio",
   },
 ];
 
