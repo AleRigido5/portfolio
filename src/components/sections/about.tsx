@@ -42,11 +42,10 @@ export async function About() {
     <section
       id="about"
       aria-labelledby="about-title"
-      className="border-t border-border"
     >
       <div className="mx-auto grid max-w-6xl gap-14 px-4 py-24 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-20 lg:py-32">
         {/* Colonna sinistra: bio e metodo */}
-        <div>
+        <div className="reveal">
           <p className="font-mono text-sm text-accent">01 — Chi sono</p>
           <h2
             id="about-title"
@@ -75,8 +74,12 @@ export async function About() {
             Come lavoro
           </h3>
           <ul className="mt-5 grid gap-5 sm:grid-cols-2">
-            {principles.map((item) => (
-              <li key={item.title} className="flex gap-3">
+            {principles.map((item, index) => (
+              <li
+                key={item.title}
+                className="reveal flex gap-3"
+                style={{ "--i": index % 2 } as React.CSSProperties}
+              >
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 20 20"
@@ -99,7 +102,7 @@ export async function About() {
         </div>
 
         {/* Colonna destra: competenze dal database */}
-        <div>
+        <div className="reveal">
           <h3 className="text-sm font-medium tracking-wider text-muted uppercase">
             Competenze tecniche
           </h3>
@@ -108,10 +111,11 @@ export async function About() {
             <p className="mt-5 text-muted">Competenze in aggiornamento.</p>
           ) : (
             <ul className="mt-5 grid gap-4 sm:grid-cols-2">
-              {skillGroups.map((group) => (
+              {skillGroups.map((group, index) => (
                 <li
                   key={group.category}
-                  className="group rounded-2xl border border-border bg-surface p-5 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                  style={{ "--i": index % 2 } as React.CSSProperties}
+                  className="spotlight reveal group rounded-2xl border border-border bg-surface p-5 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                 >
                   <div className="flex items-center gap-3">
                     <span className="inline-flex size-9 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-accent-foreground">
@@ -138,7 +142,7 @@ export async function About() {
                     {group.items.map((tech) => (
                       <li
                         key={tech.id}
-                        className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground"
+                        className="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-accent/50 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                       >
                         {tech.name}
                       </li>

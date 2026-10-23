@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { flushSync } from "react-dom";
 
 import type { ProjectCardData } from "@/lib/data/projects";
 import { ProjectCard } from "./project-card";
@@ -28,6 +29,19 @@ export function ProjectsGrid({
 
   const activeName = filters.find((f) => f.slug === active)?.name;
 
+  // Con la View Transitions API le card si spostano/riordinano con un'animazione
+  // fluida invece di "saltare". Browser senza supporto: cambio immediato.
+  function changeFilter(next: string | null) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!document.startViewTransition || reduceMotion) {
+      setActive(next);
+      return;
+    }
+    document.startViewTransition(() => {
+      flushSync(() => setActive(next));
+    });
+  }
+
   return (
     <>
       {/* Barra filtri: pulsanti toggle con aria-pressed */}
@@ -40,7 +54,7 @@ export function ProjectsGrid({
           label="Tutti"
           count={projects.length}
           pressed={active === null}
-          onClick={() => setActive(null)}
+          onClick={() => changeFilter(null)}
         />
         {filters.map((filter) => (
           <FilterButton
@@ -48,7 +62,7 @@ export function ProjectsGrid({
             label={filter.name}
             count={filter.count}
             pressed={active === filter.slug}
-            onClick={() => setActive(active === filter.slug ? null : filter.slug)}
+            onClick={() => changeFilter(active === filter.slug ? null : filter.slug)}
           />
         ))}
       </div>
@@ -60,8 +74,18 @@ export function ProjectsGrid({
       </p>
 
       <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {visible.map((project) => (
-          <li key={project.id} className="motion-safe:animate-fade-up">
+        {visible.map((project, index) => (
+          <li
+            key={project.id}
+            className="reveal"
+            style={
+              {
+                "--i": index % 3,
+                // Nome univoco: permette al browser di animare ogni card nella nuova posizione
+                viewTransitionName: `project-${project.slug}`,
+              } as React.CSSProperties
+            }
+          >
             <ProjectCard project={project} activeTech={active} />
           </li>
         ))}

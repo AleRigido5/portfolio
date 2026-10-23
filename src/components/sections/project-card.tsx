@@ -16,7 +16,7 @@ export function ProjectCard({
   const meta = [project.client, project.year].filter(Boolean).join(" · ");
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl hover:shadow-accent/5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+    <article className="spotlight group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl hover:shadow-accent/5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
       {/* Copertina: contenitore con proporzioni fisse → nessun layout shift */}
       <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-background">
         {project.cover ? (

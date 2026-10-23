@@ -36,6 +36,13 @@ const nextConfig: NextConfig = {
     // Larghezze generate: coprono card (368px) e schermi fino a 2x/3x
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [256, 384, 512],
+    // Immagini caricate dall'admin su Vercel Blob
+    remotePatterns: [{ protocol: "https", hostname: "*.public.blob.vercel-storage.com" }],
+  },
+
+  experimental: {
+    // Upload delle copertine dall'admin (Vercel accetta richieste fino a 4,5 MB)
+    serverActions: { bodySizeLimit: "4mb" },
   },
 
   async headers() {
@@ -43,6 +50,15 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        // Il pannello admin non deve mai essere indicizzato
+        source: "/gestione-ar/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/gestione-ar",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
     ];
   },

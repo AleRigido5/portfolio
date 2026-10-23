@@ -1,6 +1,10 @@
 // =============================================================
 //  Portfolio — Schema Prisma (Prisma ORM 7 + MySQL 8)
 // =============================================================
+//  - L'URL di connessione NON sta qui: in Prisma 7 vive in prisma.config.ts
+//  - Il client viene generato in src/generated/prisma (da aggiungere a .gitignore)
+//  - A runtime il client usa il driver adapter @prisma/adapter-mariadb
+// =============================================================
 
 generator client {
   provider = "prisma-client"
@@ -42,15 +46,17 @@ enum MessageStatus {
 
 // -------------------------------------------------------------
 //  TECNOLOGIE / COMPETENZE
+//  Unica tabella usata sia per i badge dei progetti e i filtri
+//  della griglia, sia per la sezione "Chi sono".
 // -------------------------------------------------------------
 
 model Technology {
   id          String       @id @default(cuid())
-  name        String       @unique @db.VarChar(60)
-  slug        String       @unique @db.VarChar(60)
+  name        String       @unique @db.VarChar(60)  // "Next.js"
+  slug        String       @unique @db.VarChar(60)  // "nextjs" → usato nei filtri ?tech=nextjs
   category    TechCategory
-  iconKey     String?      @db.VarChar(60)
-  showInAbout Boolean      @default(true)
+  iconKey     String?      @db.VarChar(60)          // chiave dell'icona SVG locale (niente CDN esterni)
+  showInAbout Boolean      @default(true)           // visibile nella sezione Competenze
   sortOrder   Int          @default(0)
 
   projects    Project[]
@@ -69,24 +75,26 @@ model Technology {
 
 model Project {
   id          String    @id @default(cuid())
-  slug        String    @unique @db.VarChar(120)
+  slug        String    @unique @db.VarChar(120)   // URL della pagina di dettaglio /work/[slug]
   title       String    @db.VarChar(120)
-  summary     String    @db.VarChar(280)
-  description String?   @db.Text
+  summary     String    @db.VarChar(280)           // testo breve per card e meta description
+  description String?   @db.Text                   // contenuto esteso (Markdown)
 
-  coverImage  String    @db.VarChar(255)
-  coverAlt    String    @db.VarChar(200)
+  // Immagine di copertina: larghezza/altezza salvate per passarle a next/image
+  // ed evitare layout shift (CLS = 0)
+  coverImage  String    @db.VarChar(255)           // es. "/projects/gestionale.webp"
+  coverAlt    String    @db.VarChar(200)           // alt text obbligatorio per l'accessibilità
   coverWidth  Int
   coverHeight Int
-  coverBlur   String?   @db.Text
+  coverBlur   String?   @db.Text                   // placeholder blurDataURL (base64), opzionale
 
   liveUrl     String?   @db.VarChar(255)
   repoUrl     String?   @db.VarChar(255)
-  role        String?   @db.VarChar(120)
-  client      String?   @db.VarChar(120)
+  role        String?   @db.VarChar(120)           // es. "Full-stack developer"
+  client      String?   @db.VarChar(120)           // nullable per progetti riservati/NDA
 
-  featured    Boolean   @default(false)
-  published   Boolean   @default(false)
+  featured    Boolean   @default(false)            // in evidenza nella home
+  published   Boolean   @default(false)            // bozze non visibili
   sortOrder   Int       @default(0)
   completedAt DateTime? @db.Date
 
@@ -107,14 +115,14 @@ model Project {
 model Experience {
   id           String         @id @default(cuid())
   type         ExperienceType
-  role         String         @db.VarChar(120)
+  role         String         @db.VarChar(120)     // "Full-stack Developer" / "Laurea in ..."
   organization String         @db.VarChar(120)
   location     String?        @db.VarChar(120)
   url          String?        @db.VarChar(255)
   startDate    DateTime       @db.Date
-  endDate      DateTime?      @db.Date
+  endDate      DateTime?      @db.Date             // null = "in corso"
   description  String?        @db.Text
-  highlights   Json?
+  highlights   Json?                               // array di stringhe: risultati chiave
   sortOrder    Int            @default(0)
 
   technologies Technology[]
@@ -131,22 +139,71 @@ model Experience {
 // -------------------------------------------------------------
 
 model ContactMessage {
-  id          String        @id @default(cuid())
+  id          String        @id @default(cuid())   // cuid: id non enumerabili
   name        String        @db.VarChar(100)
   email       String        @db.VarChar(254)
   subject     String?       @db.VarChar(150)
   message     String        @db.Text
   status      MessageStatus @default(NEW)
 
+  // Anti-spam / rate limiting senza conservare l'IP in chiaro (GDPR):
+  // si salva un hash SHA-256 dell'IP con un salt segreto
   ipHash      String?       @db.Char(64)
   userAgent   String?       @db.VarChar(255)
 
+  // Esito della notifica email (utile per ritentare gli invii falliti)
   notifiedAt  DateTime?
   notifyError String?       @db.VarChar(500)
 
   createdAt   DateTime      @default(now())
 
   @@index([status, createdAt])
-  @@index([ipHash, createdAt])
+  @@index([ipHash, createdAt])                      // query "quanti messaggi da questo IP nell'ultima ora?"
   @@map("contact_messages")
+}
+
+// -------------------------------------------------------------
+//  ADMIN: utente, sessioni e tentativi di login
+// -------------------------------------------------------------
+
+/// Utente amministratore (un solo account: il tuo). Si crea con `npm run admin:create`
+model AdminUser {
+  id           String         @id @default(cuid())
+  email        String         @unique @db.VarChar(254)
+  passwordHash String         @db.VarChar(255)            // scrypt, mai la password in chiaro
+  lastLoginAt  DateTime?
+
+  sessions     AdminSession[]
+
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@map("admin_users")
+}
+
+/// Sessioni di login: nel cookie c'è un token casuale, qui solo il suo hash.
+/// Cancellando la riga la sessione è revocata subito (logout reale).
+model AdminSession {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique @db.Char(64)
+  userId    String
+  user      AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  userAgent String?   @db.VarChar(255)
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("admin_sessions")
+}
+
+/// Tentativi di accesso: servono a bloccare chi prova password a raffica
+model LoginAttempt {
+  id        String   @id @default(cuid())
+  ipHash    String   @db.Char(64)
+  success   Boolean
+  createdAt DateTime @default(now())
+
+  @@index([ipHash, createdAt])
+  @@map("login_attempts")
 }

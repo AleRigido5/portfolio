@@ -10,7 +10,7 @@ const details = [
   },
   {
     label: "Dove lavoro",
-    value: "Italia · Anche da remoto",
+    value: "Italia · anche da remoto",
     icon: (
       <>
         <path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z" />
@@ -33,9 +33,9 @@ const details = [
 // Server Component statico: solo il form è un Client Component
 export function Contact() {
   return (
-    <section id="contact" aria-labelledby="contact-title" className="border-t border-border">
+    <section id="contact" aria-labelledby="contact-title">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[1fr_1.4fr] lg:gap-20 lg:py-32">
-        <div>
+        <div className="reveal">
           <p className="font-mono text-sm text-accent">04 — Contatti</p>
           <h2
             id="contact-title"
@@ -51,8 +51,8 @@ export function Contact() {
 
           <ul className="mt-10 space-y-5">
             {details.map((item) => (
-              <li key={item.label} className="flex items-center gap-4">
-                <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl border border-border bg-surface text-accent">
+              <li key={item.label} className="group flex items-center gap-4">
+                <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl border border-border bg-surface text-accent transition-[transform,background-color,color,border-color] duration-300 group-hover:-rotate-6 group-hover:scale-110 group-hover:border-accent group-hover:bg-accent group-hover:text-accent-foreground motion-reduce:transition-none motion-reduce:group-hover:rotate-0 motion-reduce:group-hover:scale-100">
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 24 24"
@@ -86,7 +86,9 @@ export function Contact() {
           </ul>
         </div>
 
-        <ContactForm />
+        <div className="reveal" style={{ "--i": 1 } as React.CSSProperties}>
+          <ContactForm />
+        </div>
       </div>
     </section>
   );

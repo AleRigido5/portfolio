@@ -1,8 +1,7 @@
 import "server-only";
-import { existsSync } from "node:fs";
-import path from "node:path";
 import { cacheLife, cacheTag } from "next/cache";
 
+import { imageExists } from "@/lib/admin/uploads-dir";
 import { prisma } from "@/lib/prisma";
 
 export type ProjectTech = { slug: string; name: string };
@@ -27,13 +26,6 @@ export type ProjectCardData = {
   } | null;
   technologies: ProjectTech[];
 };
-
-// Un'immagine locale (es. "/projects/x.webp") viene usata solo se il file esiste
-// davvero in /public: così un'immagine mancante non genera 404 ed errori in console
-function resolveCover(src: string): boolean {
-  if (/^https?:\/\//.test(src)) return true;
-  return existsSync(path.join(process.cwd(), "public", src));
-}
 
 /**
  * Progetti pubblicati: prima quelli in evidenza, poi per sortOrder.
@@ -81,7 +73,7 @@ export async function getPublishedProjects(): Promise<ProjectCardData[]> {
     repoUrl: p.repoUrl,
     featured: p.featured,
     year: p.completedAt ? p.completedAt.getFullYear() : null,
-    cover: resolveCover(p.coverImage)
+    cover: imageExists(p.coverImage)
       ? {
           src: p.coverImage,
           alt: p.coverAlt,

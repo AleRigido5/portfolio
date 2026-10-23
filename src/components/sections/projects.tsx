@@ -23,10 +23,9 @@ export async function Projects() {
     <section
       id="projects"
       aria-labelledby="projects-title"
-      className="border-t border-border"
     >
       <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:py-32">
-        <div className="max-w-2xl">
+        <div className="reveal max-w-2xl">
           <p className="font-mono text-sm text-accent">02 — Progetti</p>
           <h2
             id="projects-title"

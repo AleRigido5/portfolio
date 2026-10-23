@@ -42,9 +42,16 @@
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
-/* Animazione di entrata: utility "animate-fade-up" (usata con motion-safe:) */
+/* -------------------------------------------------------------
+   Animazioni come utility Tailwind (usate con motion-safe:)
+   Animano solo transform/scale/opacity → composite su GPU, nessun impatto su CLS
+   ------------------------------------------------------------- */
 @theme {
   --animate-fade-up: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-aurora-1: aurora-1 18s ease-in-out infinite alternate;
+  --animate-aurora-2: aurora-2 22s ease-in-out infinite alternate;
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-highlight: highlight 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
 
   @keyframes fade-up {
     from {
@@ -55,6 +62,161 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  /* Bagliori dello sfondo nella Hero */
+  @keyframes aurora-1 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(18%, 12%) scale(1.15); }
+    100% { transform: translate(-12%, 6%) scale(0.95); }
+  }
+  @keyframes aurora-2 {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20%, -10%) scale(1.1); }
+    100% { transform: translate(10%, 14%) scale(1.2); }
+  }
+
+  /* Nastro scorrevole delle tecnologie */
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+
+  /* Evidenziatore sotto "su misura" */
+  @keyframes highlight {
+    from { scale: 0 1; }
+    to { scale: 1 1; }
+  }
+}
+
+/* Onde del separatore tra le sezioni (usato da WaveDivider) */
+@keyframes wave-flow {
+  to { transform: translateX(-50%); }
+}
+
+/* Keyframes per le animazioni legate allo scroll */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem) scale(0.98);
+  }
+}
+@keyframes grow-x {
+  from { scale: 0 1; }
+  to { scale: 1 1; }
+}
+@keyframes grow-y {
+  from { scale: 1 0; }
+  to { scale: 1 1; }
+}
+
+@layer components {
+  /* ---------------------------------------------------------------
+     Scroll-driven animations: zero JavaScript, gestite dal browser.
+     Dove non sono supportate (o con "riduci movimento") gli elementi
+     restano semplicemente visibili e fermi.
+     --------------------------------------------------------------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      /* Entrata dal basso quando l'elemento entra nello schermo.
+         --i sfasa gli elementi sulla stessa riga (effetto a cascata) */
+      .reveal {
+        animation: reveal-up linear both;
+        animation-timeline: view();
+        animation-range: entry calc(5% + var(--i, 0) * 8%) cover calc(25% + var(--i, 0) * 8%);
+      }
+
+      /* Barra di avanzamento della lettura nella navbar */
+      .scroll-progress {
+        animation: grow-x linear both;
+        animation-timeline: scroll(root);
+      }
+
+      /* Linea della timeline che si "disegna" scorrendo */
+      .timeline-draw {
+        animation: grow-y linear both;
+        animation-timeline: view();
+        animation-range: cover 10% cover 55%;
+      }
+    }
+  }
+
+  /* ---------------------------------------------------------------
+     Spotlight: bagliore che segue il mouse sulle card.
+     Le coordinate (--mx, --my) le aggiorna <PointerSpotlight />
+     --------------------------------------------------------------- */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, var(--accent) 14%, transparent),
+      transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  @media (hover: hover) {
+    .spotlight:hover::before {
+      opacity: 1;
+    }
+  }
+
+  /* Riflesso che attraversa i pulsanti principali all'hover */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      100deg,
+      transparent 20%,
+      rgb(255 255 255 / 0.35) 50%,
+      transparent 80%
+    );
+    transform: translateX(-120%);
+  }
+  @media (prefers-reduced-motion: no-preference) and (hover: hover) {
+    .shine:hover::after {
+      transform: translateX(120%);
+      transition: transform 0.7s ease;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------
+   View Transitions: morphing delle card quando cambi filtro
+   e cambio tema con cerchio che si espande dal pulsante
+   --------------------------------------------------------------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-group(*) {
+  animation-duration: 450ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Durante il cambio tema le card non devono animarsi per conto loro */
+.theme-transition * {
+  view-transition-name: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }
 

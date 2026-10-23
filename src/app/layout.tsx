@@ -2,8 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import { Footer } from "@/components/layout/footer";
-import { Navbar } from "@/components/layout/navbar";
 import { siteConfig } from "@/lib/site";
 
 // next/font scarica i font in fase di build e li serve dal tuo dominio:
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: defaultTitle,
-    template: `%s | ${siteConfig.name}`, // es. "Progetti | Alessandro Rigido"
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
@@ -76,25 +74,14 @@ export const viewport: Viewport = {
 // ed evita il "flash" bianco al caricamento in dark mode
 const themeScript = `(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;r.classList.toggle("dark",d);r.style.colorScheme=d?"dark":"light";}catch(e){}})();`;
 
-// Dati strutturati per Google (rich results sulla persona)
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: siteConfig.name,
-  url: siteConfig.url,
-  jobTitle: siteConfig.role,
-  email: `mailto:${siteConfig.email}`,
-  sameAs: Object.values(siteConfig.links),
-  knowsAbout: ["PHP", "Laravel", "MySQL", "React", "Next.js", "TypeScript"],
-};
-
+// Layout radice: comune a sito pubblico e admin.
+// Navbar, footer e sfondo stanno in src/app/(site)/layout.tsx
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="it"
-      // lo script anti-flash modifica class e style di <html> prima dell'idratazione
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
@@ -102,29 +89,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="flex min-h-dvh flex-col bg-background font-sans text-foreground antialiased">
-        {/* Primo elemento focusabile: permette di saltare la navigazione da tastiera */}
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-accent-foreground"
-        >
-          Vai al contenuto principale
-        </a>
-
-        <Navbar />
-
-        <main id="main" tabIndex={-1} className="flex-1 outline-none">
-          {children}
-        </main>
-
-        <Footer />
-
-        <script
-          type="application/ld+json"
-          // l'escape di "<" impedisce di chiudere il tag script con contenuti malevoli
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
-          }}
-        />
+        {children}
       </body>
     </html>
   );

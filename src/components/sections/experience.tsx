@@ -20,11 +20,10 @@ export async function Experience() {
     <section
       id="experience"
       aria-labelledby="experience-title"
-      className="border-t border-border"
     >
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[1fr_1.6fr] lg:gap-20 lg:py-32">
         {/* Intestazione: resta fissa durante lo scroll su desktop */}
-        <div className="lg:sticky lg:top-28 lg:self-start">
+        <div className="reveal lg:sticky lg:top-28 lg:self-start">
           <p className="font-mono text-sm text-accent">03 — Esperienze</p>
           <h2
             id="experience-title"
@@ -70,6 +69,12 @@ function TimelineItem({ item, isLast }: { item: ExperienceItem; isLast: boolean 
         }`}
       />
 
+      {/* Linea accent che si "disegna" scorrendo, sopra quella grigia */}
+      <span
+        aria-hidden="true"
+        className="timeline-draw absolute top-3 bottom-0 left-[7px] w-px origin-top scale-y-0 bg-gradient-to-b from-accent to-accent/0"
+      />
+
       {/* Punto sulla linea: pulsa se l'esperienza è in corso */}
       <span aria-hidden="true" className="absolute top-1.5 left-0 flex size-[15px]">
         {isCurrent && (
@@ -78,7 +83,7 @@ function TimelineItem({ item, isLast }: { item: ExperienceItem; isLast: boolean 
         <span className="relative inline-flex size-[15px] rounded-full border-2 border-accent bg-background" />
       </span>
 
-      <article className="group rounded-2xl border border-border bg-surface p-6 transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 motion-reduce:transition-none sm:p-7">
+      <article className="spotlight reveal group rounded-2xl border border-border bg-surface p-6 transition-[border-color,box-shadow] duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 motion-reduce:transition-none sm:p-7">
         {/* Periodo */}
         <p className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs text-muted">
           <span>
@@ -130,7 +135,10 @@ function TimelineItem({ item, isLast }: { item: ExperienceItem; isLast: boolean 
             </h4>
             <ul className="mt-3 space-y-2.5">
               {item.highlights.map((highlight) => (
-                <li key={highlight} className="flex gap-3 text-sm leading-relaxed text-foreground">
+                <li
+                  key={highlight}
+                  className="reveal flex gap-3 text-sm leading-relaxed text-foreground"
+                >
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 20 20"

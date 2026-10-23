@@ -38,6 +38,12 @@ export function Navbar() {
           <MobileMenu items={siteConfig.nav} />
         </div>
       </nav>
+
+      {/* Barra di avanzamento dello scroll (solo CSS, vedi .scroll-progress) */}
+      <span
+        aria-hidden="true"
+        className="scroll-progress absolute inset-x-0 -bottom-px h-0.5 origin-left scale-x-0 bg-accent"
+      />
     </header>
   );
 }
