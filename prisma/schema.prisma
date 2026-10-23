@@ -1,0 +1,152 @@
+// =============================================================
+//  Portfolio — Schema Prisma (Prisma ORM 7 + MySQL 8)
+// =============================================================
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// -------------------------------------------------------------
+//  ENUM
+// -------------------------------------------------------------
+
+/// Raggruppa le tecnologie nella sezione "Competenze" e nei filtri progetti
+enum TechCategory {
+  FRONTEND
+  BACKEND
+  DATABASE
+  DEVOPS
+  TOOL
+}
+
+/// Tipo di voce nella timeline
+enum ExperienceType {
+  WORK
+  EDUCATION
+  CERTIFICATION
+}
+
+/// Stato di lavorazione dei messaggi ricevuti dal form
+enum MessageStatus {
+  NEW
+  READ
+  REPLIED
+  ARCHIVED
+  SPAM
+}
+
+// -------------------------------------------------------------
+//  TECNOLOGIE / COMPETENZE
+// -------------------------------------------------------------
+
+model Technology {
+  id          String       @id @default(cuid())
+  name        String       @unique @db.VarChar(60)
+  slug        String       @unique @db.VarChar(60)
+  category    TechCategory
+  iconKey     String?      @db.VarChar(60)
+  showInAbout Boolean      @default(true)
+  sortOrder   Int          @default(0)
+
+  projects    Project[]
+  experiences Experience[]
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([category, sortOrder])
+  @@map("technologies")
+}
+
+// -------------------------------------------------------------
+//  PROGETTI
+// -------------------------------------------------------------
+
+model Project {
+  id          String    @id @default(cuid())
+  slug        String    @unique @db.VarChar(120)
+  title       String    @db.VarChar(120)
+  summary     String    @db.VarChar(280)
+  description String?   @db.Text
+
+  coverImage  String    @db.VarChar(255)
+  coverAlt    String    @db.VarChar(200)
+  coverWidth  Int
+  coverHeight Int
+  coverBlur   String?   @db.Text
+
+  liveUrl     String?   @db.VarChar(255)
+  repoUrl     String?   @db.VarChar(255)
+  role        String?   @db.VarChar(120)
+  client      String?   @db.VarChar(120)
+
+  featured    Boolean   @default(false)
+  published   Boolean   @default(false)
+  sortOrder   Int       @default(0)
+  completedAt DateTime? @db.Date
+
+  technologies Technology[]
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([published, featured, sortOrder])
+  @@index([published, sortOrder])
+  @@map("projects")
+}
+
+// -------------------------------------------------------------
+//  ESPERIENZE (timeline lavoro / formazione)
+// -------------------------------------------------------------
+
+model Experience {
+  id           String         @id @default(cuid())
+  type         ExperienceType
+  role         String         @db.VarChar(120)
+  organization String         @db.VarChar(120)
+  location     String?        @db.VarChar(120)
+  url          String?        @db.VarChar(255)
+  startDate    DateTime       @db.Date
+  endDate      DateTime?      @db.Date
+  description  String?        @db.Text
+  highlights   Json?
+  sortOrder    Int            @default(0)
+
+  technologies Technology[]
+
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@index([type, startDate])
+  @@map("experiences")
+}
+
+// -------------------------------------------------------------
+//  MESSAGGI DEL FORM DI CONTATTO
+// -------------------------------------------------------------
+
+model ContactMessage {
+  id          String        @id @default(cuid())
+  name        String        @db.VarChar(100)
+  email       String        @db.VarChar(254)
+  subject     String?       @db.VarChar(150)
+  message     String        @db.Text
+  status      MessageStatus @default(NEW)
+
+  ipHash      String?       @db.Char(64)
+  userAgent   String?       @db.VarChar(255)
+
+  notifiedAt  DateTime?
+  notifyError String?       @db.VarChar(500)
+
+  createdAt   DateTime      @default(now())
+
+  @@index([status, createdAt])
+  @@index([ipHash, createdAt])
+  @@map("contact_messages")
+}

@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
+/* Dark mode a classe: la classe .dark su <html> la imposta lo script anti-flash nel layout */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* -------------------------------------------------------------
+   Design tokens — contrasti verificati WCAG AA (testo ≥ 4.5:1)
+   ------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --surface: #ffffff;
+  --foreground: #18181b;
+  --muted: #52525b;            /* 7.3:1 su background */
+  --border: #e4e4e7;
+  --accent: #4f46e5;           /* 6.0:1 su background */
+  --accent-foreground: #ffffff;
+  color-scheme: light;
 }
 
+.dark {
+  --background: #09090b;
+  --surface: #18181b;
+  --foreground: #fafafa;
+  --muted: #a1a1aa;            /* 7.8:1 su background */
+  --border: #27272a;
+  --accent: #818cf8;           /* 6.6:1 su background */
+  --accent-foreground: #09090b;
+  color-scheme: dark;
+}
+
+/* Espone i token come utility Tailwind: bg-background, text-muted, border-border, bg-accent... */
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Animazione di entrata: utility "animate-fade-up" (usata con motion-safe:) */
+@theme {
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    /* Le ancore non finiscono sotto la navbar sticky (h-16 = 4rem) */
+    scroll-padding-top: 5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Scroll fluido solo se l'utente non ha chiesto di ridurre le animazioni */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  /* Focus visibile e coerente per la navigazione da tastiera */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
 }
