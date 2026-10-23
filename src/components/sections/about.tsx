@@ -51,7 +51,7 @@ export async function About() {
             id="about-title"
             className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
           >
-            Sviluppatore full-stack, con il backend nel DNA.
+            Sviluppatore full-stack, per progetti web completi.
           </h2>
 
           <div className="mt-6 space-y-4 text-base leading-relaxed text-pretty text-muted">
