@@ -1,0 +1,104 @@
+"use client";
+
+import { useMemo, useState } from "react";
+
+import type { ProjectCardData } from "@/lib/data/projects";
+import { ProjectCard } from "./project-card";
+
+type Filter = { slug: string; name: string; count: number };
+
+// Il filtro avviene nel browser: la pagina resta statica (niente searchParams)
+// e il cambio di filtro è istantaneo, senza richieste al server
+export function ProjectsGrid({
+  projects,
+  filters,
+}: {
+  projects: ProjectCardData[];
+  filters: Filter[];
+}) {
+  const [active, setActive] = useState<string | null>(null);
+
+  const visible = useMemo(
+    () =>
+      active
+        ? projects.filter((p) => p.technologies.some((t) => t.slug === active))
+        : projects,
+    [active, projects],
+  );
+
+  const activeName = filters.find((f) => f.slug === active)?.name;
+
+  return (
+    <>
+      {/* Barra filtri: pulsanti toggle con aria-pressed */}
+      <div
+        role="group"
+        aria-label="Filtra i progetti per tecnologia"
+        className="mt-10 flex flex-wrap gap-2"
+      >
+        <FilterButton
+          label="Tutti"
+          count={projects.length}
+          pressed={active === null}
+          onClick={() => setActive(null)}
+        />
+        {filters.map((filter) => (
+          <FilterButton
+            key={filter.slug}
+            label={filter.name}
+            count={filter.count}
+            pressed={active === filter.slug}
+            onClick={() => setActive(active === filter.slug ? null : filter.slug)}
+          />
+        ))}
+      </div>
+
+      {/* Annuncio per screen reader quando cambia il filtro */}
+      <p aria-live="polite" className="sr-only">
+        {`${visible.length} ${visible.length === 1 ? "progetto" : "progetti"}`}
+        {activeName ? ` con ${activeName}` : " in totale"}
+      </p>
+
+      <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {visible.map((project) => (
+          <li key={project.id} className="motion-safe:animate-fade-up">
+            <ProjectCard project={project} activeTech={active} />
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+function FilterButton({
+  label,
+  count,
+  pressed,
+  onClick,
+}: {
+  label: string;
+  count: number;
+  pressed: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={pressed}
+      onClick={onClick}
+      className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.96] motion-reduce:transition-none ${
+        pressed
+          ? "border-accent bg-accent text-accent-foreground"
+          : "border-border bg-surface text-muted hover:border-accent/40 hover:text-foreground"
+      }`}
+    >
+      {label}
+      <span
+        className={`font-mono text-xs ${pressed ? "opacity-80" : "opacity-60"}`}
+        aria-hidden="true"
+      >
+        {count}
+      </span>
+    </button>
+  );
+}

@@ -104,30 +104,23 @@ const projects = [
 const experiences = [
   {
     type: "WORK",
-    role: "Full-stack Web Developer",
-    organization: "Studio freelance",
+    role: "Full-stack Developer",
+    organization: "Azienda privata", // nome non mostrato per scelta
     location: "Italia",
-    startDate: new Date("2023-01-01"),
-    endDate: null,
-    description: "Sviluppo di gestionali, siti e web app per aziende e clienti privati.",
+    startDate: new Date("2026-01-01"),
+    endDate: null, // in corso
+    description:
+      "Sviluppo e mantengo il software dell'azienda: il sito della struttura ricettiva con la web app di prenotazione e il gestionale interno usato ogni giorno per l'amministrazione.",
     highlights: [
-      "Gestionali Laravel/Livewire in produzione",
-      "Web app React/Next.js con database MySQL",
+      "Sito del resort con web app di prenotazione online",
+      "Gestionale aziendale per fatturazione di vendita e acquisto",
+      "Prima nota e scadenzario dei pagamenti",
+      "Documenti di trasporto (DDT) con generazione PDF",
+      "Gestione parco mezzi con monitoraggio delle scadenze",
+      "Anagrafiche clienti e fornitori",
     ],
     sortOrder: 1,
-    tech: ["laravel", "livewire", "nextjs", "mysql"],
-  },
-  {
-    type: "EDUCATION",
-    role: "Titolo di studio",
-    organization: "Istituto / Università",
-    location: "Italia",
-    startDate: new Date("2018-09-01"),
-    endDate: new Date("2022-07-01"),
-    description: null,
-    highlights: [],
-    sortOrder: 2,
-    tech: [],
+    tech: ["php", "laravel", "livewire", "react", "inertiajs", "mysql", "tailwindcss"],
   },
 ] as const;
 

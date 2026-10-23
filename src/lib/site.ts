@@ -22,8 +22,8 @@ export const siteConfig = {
     "gestionali su misura",
   ],
   links: {
-    github: "https://github.com/tuo-utente",
-    linkedin: "https://www.linkedin.com/in/tuo-profilo",
+    github: "https://github.com/AleRigido5",
+    // linkedin: "https://www.linkedin.com/in/tuo-profilo",
   },
   // "/#..." invece di "#..." così i link funzionano anche dalle pagine di dettaglio
   nav: [

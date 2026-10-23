@@ -13,19 +13,21 @@ async function CurrentYear() {
 
 const socialLinks = [
   { label: "GitHub", href: siteConfig.links.github, external: true },
-  { label: "LinkedIn", href: siteConfig.links.linkedin, external: true },
+  // { label: "LinkedIn", href: siteConfig.links.linkedin, external: true },
   { label: "Email", href: `mailto:${siteConfig.email}`, external: false },
 ];
 
 export function Footer() {
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
+      {/* Mobile e tablet: tutto centrato e in colonna (testo sopra, link sotto).
+          Da md in su: testo a sinistra e link a destra sulla stessa riga */}
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 text-center text-sm text-muted sm:px-6 md:flex-row md:justify-between md:text-left">
         <p>
           © <CurrentYear /> {siteConfig.name}. Tutti i diritti riservati.
         </p>
 
-        <ul className="flex gap-5">
+        <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2">
           {socialLinks.map((link) => (
             <li key={link.label}>
               <a
