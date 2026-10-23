@@ -35,7 +35,7 @@ export async function saveImage(file: File, name: string): Promise<StoredImage> 
   const { data, info } = await sharp(input)
     .rotate() // rispetta l'orientamento EXIF delle foto
     .resize({ width: 1600, withoutEnlargement: true })
-    .webp({ quality: 80 })
+    .webp({ quality: 90 })
     .toBuffer({ resolveWithObject: true });
 
   const blur = await sharp(data).resize(16).webp({ quality: 40 }).toBuffer();
