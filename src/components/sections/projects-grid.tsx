@@ -5,6 +5,7 @@ import { flushSync } from "react-dom";
 
 import type { ProjectCardData } from "@/lib/data/projects";
 import { ProjectCard } from "./project-card";
+import { ProjectGallery } from "./project-gallery";
 
 type Filter = { slug: string; name: string; count: number };
 
@@ -28,6 +29,13 @@ export function ProjectsGrid({
   );
 
   const activeName = filters.find((f) => f.slug === active)?.name;
+
+  // Gallery: solo i progetti visibili (rispetta il filtro) che hanno un'immagine
+  const gallery = useMemo(
+    () => visible.filter((p): p is typeof p & { cover: NonNullable<typeof p.cover> } => p.cover !== null),
+    [visible],
+  );
+  const [galleryIndex, setGalleryIndex] = useState<number | null>(null);
 
   // Con la View Transitions API le card si spostano/riordinano con un'animazione
   // fluida invece di "saltare". Browser senza supporto: cambio immediato.
@@ -86,10 +94,21 @@ export function ProjectsGrid({
               } as React.CSSProperties
             }
           >
-            <ProjectCard project={project} activeTech={active} />
+            <ProjectCard
+              project={project}
+              activeTech={active}
+              onOpenImage={() => setGalleryIndex(gallery.findIndex((p) => p.id === project.id))}
+            />
           </li>
         ))}
       </ul>
+
+      <ProjectGallery
+        projects={gallery}
+        index={galleryIndex}
+        onChange={setGalleryIndex}
+        onClose={() => setGalleryIndex(null)}
+      />
     </>
   );
 }

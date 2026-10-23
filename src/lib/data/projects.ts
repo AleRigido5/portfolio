@@ -11,6 +11,7 @@ export type ProjectCardData = {
   slug: string;
   title: string;
   summary: string;
+  description: string | null; // testo esteso, mostrato nella gallery
   role: string | null;
   client: string | null;
   liveUrl: string | null;
@@ -44,6 +45,7 @@ export async function getPublishedProjects(): Promise<ProjectCardData[]> {
       slug: true,
       title: true,
       summary: true,
+      description: true,
       role: true,
       client: true,
       liveUrl: true,
@@ -67,6 +69,7 @@ export async function getPublishedProjects(): Promise<ProjectCardData[]> {
     slug: p.slug,
     title: p.title,
     summary: p.summary,
+    description: p.description,
     role: p.role,
     client: p.client,
     liveUrl: p.liveUrl,

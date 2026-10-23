@@ -9,9 +9,11 @@ const IMAGE_SIZES = "(min-width: 1024px) 368px, (min-width: 640px) 50vw, 100vw";
 export function ProjectCard({
   project,
   activeTech,
+  onOpenImage,
 }: {
   project: ProjectCardData;
   activeTech: string | null;
+  onOpenImage?: () => void;
 }) {
   const meta = [project.client, project.year].filter(Boolean).join(" · ");
 
@@ -33,8 +35,27 @@ export function ProjectCard({
           <CoverPlaceholder title={project.title} />
         )}
 
+        {/* Tutta la copertina è un pulsante che apre la gallery */}
+        {project.cover && onOpenImage && (
+          <button
+            type="button"
+            onClick={onOpenImage}
+            aria-label={`Apri le immagini del progetto ${project.title}`}
+            className="absolute inset-0 flex cursor-zoom-in items-end justify-end p-3 focus-visible:outline-offset-[-4px]"
+          >
+            <span
+              aria-hidden="true"
+              className="inline-flex size-9 translate-y-1 items-center justify-center rounded-full bg-background/85 text-foreground opacity-0 backdrop-blur transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:transition-none"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+              </svg>
+            </span>
+          </button>
+        )}
+
         {project.featured && (
-          <span className="absolute top-3 left-3 rounded-full bg-background/85 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur">
+          <span className="pointer-events-none absolute top-3 left-3 rounded-full bg-background/85 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur">
             In evidenza
           </span>
         )}
