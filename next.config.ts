@@ -64,15 +64,8 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
+  // Tailwind è configurato in postcss.config.mjs: funziona sia con Turbopack (npm run dev)
+  // sia con Webpack (npm run build, necessario su Hostinger)
 };
 
 export default nextConfig;
