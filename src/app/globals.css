@@ -55,7 +55,7 @@
   --animate-fade-up: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-aurora-1: aurora-1 18s ease-in-out infinite alternate;
   --animate-aurora-2: aurora-2 22s ease-in-out infinite alternate;
-  --animate-marquee: marquee 60s linear infinite;
+  --animate-marquee: marquee 28s linear infinite;
   --animate-highlight: highlight 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
 
   @keyframes fade-up {
