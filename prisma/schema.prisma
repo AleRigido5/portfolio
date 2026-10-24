@@ -82,7 +82,7 @@ model Project {
 
   // Immagine di copertina: larghezza/altezza salvate per passarle a next/image
   // ed evitare layout shift (CLS = 0)
-  coverImage  String    @db.VarChar(255)           // es. "/projects/gestionale.webp"
+  coverImage  String    @db.VarChar(255)           // es. "/img/<id>" (immagine nel database)
   coverAlt    String    @db.VarChar(200)           // alt text obbligatorio per l'accessibilità
   coverWidth  Int
   coverHeight Int
@@ -106,6 +106,22 @@ model Project {
   @@index([published, featured, sortOrder])
   @@index([published, sortOrder])
   @@map("projects")
+}
+
+// -------------------------------------------------------------
+//  IMMAGINI caricate dall'admin
+//  Salvate direttamente nel database (WebP già ottimizzato con sharp).
+//  Le serve la route /img/[id]; in Project.coverImage resta l'URL "/img/<id>".
+// -------------------------------------------------------------
+
+model StoredImage {
+  id          String   @id @default(cuid())
+  data        Bytes    @db.MediumBlob             // fino a 16 MB (in pratica 100-400 KB)
+  contentType String   @db.VarChar(50)
+  size        Int
+  createdAt   DateTime @default(now())
+
+  @@map("images")
 }
 
 // -------------------------------------------------------------
