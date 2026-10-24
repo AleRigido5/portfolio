@@ -36,12 +36,14 @@ const nextConfig: NextConfig = {
     // Larghezze generate: coprono card (368px) e schermi fino a 2x/3x
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [256, 384, 512],
-    // Immagini caricate dall'admin su Vercel Blob
+    // Le immagini caricate dall'admin ora stanno nel database (/img/<id>).
+    // Questa riga serve solo alle vecchie immagini su Vercel Blob:
+    // quando le hai ricaricate tutte dall'admin puoi eliminarla.
     remotePatterns: [{ protocol: "https", hostname: "*.public.blob.vercel-storage.com" }],
   },
 
   experimental: {
-    // Upload delle copertine dall'admin (Vercel accetta richieste fino a 4,5 MB)
+    // Upload delle copertine dall'admin (max 4 MB, vedi storage.ts)
     serverActions: { bodySizeLimit: "4mb" },
   },
 
