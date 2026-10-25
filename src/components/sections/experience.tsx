@@ -32,9 +32,9 @@ export async function Experience() {
             Percorso professionale
           </h2>
           <p className="mt-4 text-base leading-relaxed text-pretty text-muted">
-            Software utilizzato ogni giorno in azienda, dalle prenotazioni online
-            alla gestione amministrativa: progettato e sviluppato dal database
-            all&apos;interfaccia.
+            Due soluzioni software con obiettivi distinti: 
+            un sito web per il resort con funzionalità di prenotazione online e 
+            un gestionale interno per supportare le diverse attività aziendali.
           </p>
         </div>
 
