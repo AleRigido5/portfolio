@@ -59,7 +59,7 @@ export function Services() {
     <section id="services" aria-labelledby="services-title">
       <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:py-32">
         <div className="reveal max-w-2xl">
-          <p className="font-mono text-sm text-accent">01 — Servizi</p>
+          <p className="font-mono text-sm text-accent">02 — Servizi</p>
           <h2
             id="services-title"
             className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"

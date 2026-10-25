@@ -46,7 +46,7 @@ export async function About() {
       <div className="mx-auto grid max-w-6xl gap-14 px-4 py-24 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-20 lg:py-32">
         {/* Colonna sinistra: bio e metodo */}
         <div className="reveal">
-          <p className="font-mono text-sm text-accent">02 — Chi sono</p>
+          <p className="font-mono text-sm text-accent">01 — Chi sono</p>
           <h2
             id="about-title"
             className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
