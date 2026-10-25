@@ -34,8 +34,8 @@ export async function Projects() {
             Progetti selezionati
           </h2>
           <p className="mt-4 text-base leading-relaxed text-pretty text-muted">
-            Gestionali, web app e siti realizzati per aziende e privati. Usa i
-            filtri per vedere i progetti in base alla tecnologia utilizzata.
+            Una raccolta dei miei progetti, dalle applicazioni web ai gestionali. 
+            Filtra per tecnologia e scopri le soluzioni che ho realizzato.
           </p>
         </div>
 

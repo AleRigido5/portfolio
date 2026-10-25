@@ -44,9 +44,8 @@ export function Contact() {
             Parliamo del tuo progetto
           </h2>
           <p className="mt-4 text-base leading-relaxed text-pretty text-muted">
-            Ti serve un gestionale, una web app o un sito su misura? Descrivimi
-            la tua esigenza: ti risponderò con una prima valutazione e i passi
-            per iniziare.
+            Hai bisogno di un sito web, un gestionale o un&apos;applicazione su misura? 
+            Raccontami il tuo progetto e troviamo insieme la soluzione più adatta.
           </p>
 
           <ul className="mt-10 space-y-5">

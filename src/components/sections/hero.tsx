@@ -78,10 +78,10 @@ export function Hero() {
         <p
           className="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted motion-safe:animate-fade-up"
           style={{ animationDelay: "80ms" }}
-        >
-          Realizzo applicazioni web complete: la parte server con PHP, Laravel
-          e MySQL, le interfacce con React e Next.js. Seguo ogni progetto dal
-          database alla messa online, con cura per le prestazioni e i dettagli.
+        > 
+          Realizzo applicazioni web complete: backend solidi con
+          PHP, Laravel e MySQL, interfacce moderne con React e Next.js. 
+          Seguo ogni progetto dal database alla pubblicazione online, con cura per le prestazioni e i dettagli.
         </p>
 
         {/* Call to action */}
