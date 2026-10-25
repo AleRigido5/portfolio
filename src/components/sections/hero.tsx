@@ -70,6 +70,7 @@ export function Hero() {
           veloci e affidabili.
         </h1>
 
+
         <p
           className="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted motion-safe:animate-fade-up"
           style={{ animationDelay: "80ms" }}
