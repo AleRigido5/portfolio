@@ -64,11 +64,6 @@ export function Hero() {
           <span className="whitespace-nowrap">
             <span className="relative inline-block text-accent">
               su misura
-              {/* Evidenziatore che si "stende" sotto le parole */}
-              <span
-                aria-hidden="true"
-                className="absolute inset-x-0 bottom-[0.08em] -z-10 h-[0.32em] origin-left rounded-sm bg-accent/20 motion-safe:animate-highlight"
-              />
             </span>
             ,
           </span>{" "}
