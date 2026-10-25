@@ -45,8 +45,8 @@ export const siteConfig = {
   },
   // "/#..." invece di "#..." così i link funzionano anche dalle pagine di dettaglio
   nav: [
-    { label: "Servizi", href: "/#services" },
     { label: "Chi sono", href: "/#about" },
+    { label: "Servizi", href: "/#services" },
     { label: "Progetti", href: "/#projects" },
     { label: "Esperienze", href: "/#experience" },
     { label: "Contatti", href: "/#contact" },
