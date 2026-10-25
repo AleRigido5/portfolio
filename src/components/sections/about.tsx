@@ -3,20 +3,20 @@ import { getSkillGroups } from "@/lib/data/technologies";
 // Come lavoro: testo statico, da personalizzare
 const principles = [
   {
-    title: "Dal dato all'interfaccia",
-    text: "Parto dalla struttura del database e dalle regole di business, poi costruisco API e interfacce sopra fondamenta solide.",
+    title: "Dai dati all'interfaccia",
+    text: "Parto dalla struttura del database e dalle esigenze del cliente, poi sviluppo la logica e le interfacce su basi solide.",
   },
   {
-    title: "Codice tipizzato e manutenibile",
-    text: "Realizzo soluzioni modulari e ben organizzate, facili da aggiornare e adattare a nuove esigenze.",
+    title: "Codice chiaro e manutenibile",
+    text: "TypeScript, convenzioni coerenti e componenti riutilizzabili, perché il progetto resti facile da modificare ed estendere nel tempo.",
   },
   {
     title: "Prestazioni e accessibilità",
-    text: "Realizzo interfacce veloci, intuitive e accessibili, con attenzione all'esperienza utente e alla qualità complessiva.",
+    text: "Pagine leggere, immagini ottimizzate e interfacce utilizzabili anche da tastiera e con screen reader, verificate con Lighthouse.",
   },
   {
-    title: "Rilascio e manutenzione",
-    text: "Mi occupo della pubblicazione online e degli aggiornamenti, seguendo ogni progetto anche dopo il rilascio.",
+    title: "Messa online e assistenza",
+    text: "Pubblicazione, aggiornamenti e manutenzione gestiti con cura, mantenendo un rapporto diretto con il cliente.",
   },
 ];
 
@@ -46,27 +46,28 @@ export async function About() {
       <div className="mx-auto grid max-w-6xl gap-14 px-4 py-24 sm:px-6 lg:grid-cols-[1fr_1.1fr] lg:gap-20 lg:py-32">
         {/* Colonna sinistra: bio e metodo */}
         <div className="reveal">
-          <p className="font-mono text-sm text-accent">01 — Chi sono</p>
+          <p className="font-mono text-sm text-accent">02 — Chi sono</p>
           <h2
             id="about-title"
             className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
           >
-            Sviluppatore full-stack, per progetti web completi.
+            Sviluppatore full-stack, dal database all&apos;interfaccia.
           </h2>
 
           <div className="mt-6 space-y-4 text-base leading-relaxed text-pretty text-muted">
             <p>
               Sono Alessandro, sviluppatore web full-stack. Lavoro principalmente
               con <strong className="font-medium text-foreground">PHP e Laravel</strong>{" "}
-              e con i database relazionali, e realizzo interfacce moderne con{" "}
+              e con database relazionali come MySQL; per le interfacce utilizzo{" "}
               <strong className="font-medium text-foreground">React e Next.js</strong>.
             </p>
             <p>
-              Sviluppo gestionali, web app e siti su misura per aziende:
-              dalla fatturazione alla logistica, dalle prenotazioni online ai
-              pannelli di amministrazione. Seguo ogni progetto dall&apos;analisi
-              alla pubblicazione online, con un&apos;attenzione particolare a chiarezza del
-              codice, prestazioni e semplicità d&apos;uso.
+              Realizzo siti web, web app e gestionali su misura per aziende,
+              professionisti e attività locali: dal sito vetrina all&apos;area
+              riservata, dalle prenotazioni online ai pannelli di amministrazione.
+              Seguo ogni progetto dall&apos;analisi alla messa online, con
+              particolare attenzione alla chiarezza del codice, alle prestazioni
+              e alla semplicità d&apos;uso.
             </p>
           </div>
 

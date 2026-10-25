@@ -3,6 +3,7 @@
 import { startTransition, useActionState, useEffect, useRef } from "react";
 
 import { sendContactMessage } from "@/app/actions/contact-actions";
+import { siteConfig } from "@/lib/site";
 import {
   CONTACT_LIMITS,
   initialContactState,
@@ -126,7 +127,7 @@ export function ContactForm() {
             name="subject"
             type="text"
             maxLength={CONTACT_LIMITS.subject.max}
-            placeholder="Es. Gestionale per la mia azienda"
+            placeholder="Es. Nuovo sito per la mia attività"
             aria-invalid={!!errorOf("subject")}
             aria-describedby={errorOf("subject") ? "contact-subject-error" : undefined}
             className={inputClass}
@@ -175,7 +176,17 @@ export function ContactForm() {
           />
           <label htmlFor="contact-consent" className="cursor-pointer text-sm leading-relaxed text-muted">
             Acconsento al trattamento dei miei dati personali al solo fine di
-            ricevere una risposta alla mia richiesta.
+            ricevere una risposta alla mia richiesta, come descritto nella{" "}
+            <a
+              href={siteConfig.privacyPolicyUrl}
+              target="_blank"
+              rel="noopener"
+              className="iubenda-noiframe iubenda-embed iubenda-nostyle font-medium text-foreground underline underline-offset-2 hover:text-accent"
+            >
+              privacy policy
+              <span className="sr-only"> (si apre in una nuova scheda)</span>
+            </a>
+            .
           </label>
         </div>
         {errorOf("consent") && (

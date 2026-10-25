@@ -24,7 +24,7 @@ export async function Experience() {
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[1fr_1.6fr] lg:gap-20 lg:py-32">
         {/* Intestazione: resta fissa durante lo scroll su desktop */}
         <div className="reveal lg:sticky lg:top-28 lg:self-start">
-          <p className="font-mono text-sm text-accent">03 — Esperienze</p>
+          <p className="font-mono text-sm text-accent">04 — Esperienze</p>
           <h2
             id="experience-title"
             className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
@@ -32,9 +32,9 @@ export async function Experience() {
             Percorso professionale
           </h2>
           <p className="mt-4 text-base leading-relaxed text-pretty text-muted">
-            Due soluzioni software con obiettivi distinti: 
-            un sito web per il resort con funzionalità di prenotazione online e 
-            un gestionale interno per supportare le diverse attività aziendali.
+            Software utilizzato ogni giorno in azienda, dalle prenotazioni online
+            alla gestione amministrativa: progettato e sviluppato dal database
+            all&apos;interfaccia.
           </p>
         </div>
 

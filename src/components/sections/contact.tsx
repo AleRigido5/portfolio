@@ -36,7 +36,7 @@ export function Contact() {
     <section id="contact" aria-labelledby="contact-title">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[1fr_1.4fr] lg:gap-20 lg:py-32">
         <div className="reveal">
-          <p className="font-mono text-sm text-accent">04 — Contatti</p>
+          <p className="font-mono text-sm text-accent">05 — Contatti</p>
           <h2
             id="contact-title"
             className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
@@ -44,8 +44,9 @@ export function Contact() {
             Parliamo del tuo progetto
           </h2>
           <p className="mt-4 text-base leading-relaxed text-pretty text-muted">
-            Hai bisogno di un sito web, un gestionale o un&apos;applicazione su misura? 
-            Raccontami il tuo progetto e troviamo insieme la soluzione più adatta.
+            Ti serve un sito web, una web app o un gestionale su misura?
+            Descrivimi la tua esigenza: ti risponderò con una prima valutazione
+            e i passi per iniziare.
           </p>
 
           <ul className="mt-10 space-y-5">

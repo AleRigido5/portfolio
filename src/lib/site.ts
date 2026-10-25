@@ -3,52 +3,40 @@
 //  navbar, footer, sitemap e dati strutturati (JSON-LD).
 // =============================================================
 
-
 export const siteConfig = {
   name: "Alessandro Rigido",
   role: "Full-stack Web Developer",
-
-  // Titolo SEO: servizi principali e nome
-  title:
-    "Alessandro Rigido | Sviluppatore Web Full-stack",
-
-  // Descrizione SEO
+  // Titolo della home su Google (max ~60 caratteri visibili): parole chiave prima, nome dopo
+  title: "Alessandro Rigido | Sviluppatore Web Full-stack",
+  // Descrizione su Google (max ~155 caratteri): cosa fai, con cosa, e un invito all'azione
   description:
-    "Sviluppatore web full-stack specializzato in gestionali aziendali, web app e siti web su misura con PHP, Laravel, MySQL, React e Next.js. Contattami per il tuo progetto.",
-
-  url: (
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://ar-webdev.it"
-  ).replace(/\/$/, ""),
-
+    "Sviluppatore web full-stack: siti web, web app e gestionali su misura per aziende e professionisti, con Laravel, React e Next.js. Contattami per il tuo progetto.",
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
   locale: "it_IT",
   email: "alessandro.designstudio@gmail.com",
-
   // Privacy e cookie policy generate con iubenda
   privacyPolicyUrl: "https://www.iubenda.com/privacy-policy/48607351",
   cookiePolicyUrl: "https://www.iubenda.com/privacy-policy/48607351/cookie-policy",
-
-  // Area geografica di riferimento
-  area: "Gioia del Colle (BA), Puglia",
-
-  // Argomenti e servizi da utilizzare nei contenuti SEO
+  // Zona in cui lavori (SEO locale), es. "Bari, Puglia". Lascia "" se non vuoi indicarla.
+  area: "",
+  // Il meta tag "keywords" Google lo ignora: queste parole servono soprattutto
+  // come promemoria di cosa scrivere nei testi (titoli, paragrafi, descrizioni dei progetti)
   keywords: [
+    "sviluppatore web",
     "sviluppatore web full-stack",
-    "programmatore web freelance",
-    "sviluppo gestionali aziendali",
-    "gestionali web personalizzati",
-    "software gestionale su misura",
-    "sviluppo applicazioni web",
     "realizzazione siti web",
+    "sito web aziendale",
+    "sviluppo siti web su misura",
+    "programmatore web",
+    "sviluppo gestionali su misura",
+    "gestionale web aziendale",
+    "sviluppo web app",
+    "software su misura per aziende",
     "sviluppatore Laravel",
     "sviluppatore PHP",
-    "sviluppatore MySQL",
-    "sviluppatore React",
     "sviluppatore Next.js",
-    "sviluppo frontend e backend",
-    "database SQL",
-    "digitalizzazione processi aziendali",
-    "sviluppatore web Puglia",
-    "sviluppatore web Bari",
+    "sviluppatore React",
+    "sistema di prenotazione online",
   ],
   // Profili pubblici: quelli lasciati con "tuo-..." vengono ignorati da JSON-LD e footer
   links: {
@@ -57,6 +45,7 @@ export const siteConfig = {
   },
   // "/#..." invece di "#..." così i link funzionano anche dalle pagine di dettaglio
   nav: [
+    { label: "Servizi", href: "/#services" },
     { label: "Chi sono", href: "/#about" },
     { label: "Progetti", href: "/#projects" },
     { label: "Esperienze", href: "/#experience" },

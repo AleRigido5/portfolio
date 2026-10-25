@@ -59,25 +59,30 @@ export function Hero() {
           id="hero-title"
           className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
         >
-          Sviluppo web app e gestionali{" "}
+          Siti web, web app e gestionali{" "}
           {/* "su misura" e la virgola restano sempre sulla stessa riga */}
           <span className="whitespace-nowrap">
             <span className="relative inline-block text-accent">
               su misura
+              {/* Evidenziatore che si "stende" sotto le parole */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-[0.08em] -z-10 h-[0.32em] origin-left rounded-sm bg-accent/20 motion-safe:animate-highlight"
+              />
             </span>
             ,
           </span>{" "}
           veloci e affidabili.
         </h1>
 
-
         <p
           className="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted motion-safe:animate-fade-up"
           style={{ animationDelay: "80ms" }}
-        > 
-          Realizzo applicazioni web complete: backend solidi con
-          PHP, Laravel e MySQL, interfacce moderne con React e Next.js. 
-          Seguo ogni progetto dal database alla pubblicazione online, con cura per le prestazioni e i dettagli.
+        >
+          Realizzo progetti web completi, dal sito vetrina all&apos;applicazione
+          aziendale: la parte server con PHP, Laravel e MySQL, le interfacce con
+          React e Next.js. Seguo ogni progetto dall&apos;idea alla messa online,
+          con cura per le prestazioni e i dettagli.
         </p>
 
         {/* Call to action */}
