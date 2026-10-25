@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import { after } from "next/server";
 import { z } from "zod";
 
-import { sendContactNotification } from "@/lib/email";
+import { sendContactConfirmation, sendContactNotification } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { contactSchema, type ContactState } from "@/lib/validations/contact-schema";
 
@@ -15,7 +15,7 @@ const MIN_FILL_TIME_MS = 3000; // un umano non compila il form in meno di 3 seco
 
 const SUCCESS: ContactState = {
   status: "success",
-  message: "Messaggio inviato! Ti risponderò il prima possibile.",
+  message: "Messaggio inviato. Ti risponderò il prima possibile.",
 };
 
 // L'IP non viene mai salvato in chiaro (GDPR): solo un hash con salt segreto
@@ -29,12 +29,13 @@ export async function sendContactMessage(
   _prevState: ContactState,
   formData: FormData,
 ): Promise<ContactState> {
-  // 1. Honeypot: i bot compilano il campo nascosto
+  // 1. Honeypot: campo invisibile agli utenti, i bot lo compilano.
+  //    Rispondiamo "successo" così il bot non capisce di essere stato bloccato.
   if (formData.get("company_website")) {
     return SUCCESS;
   }
 
-  // 2. Validazione lato server
+  // 2. Validazione lato server (l'unica di cui fidarsi)
   const parsed = contactSchema.safeParse({
     name: formData.get("name") ?? undefined,
     email: formData.get("email") ?? undefined,
@@ -72,8 +73,7 @@ export async function sendContactMessage(
     if (recent >= RATE_LIMIT_MAX) {
       return {
         status: "error",
-        message:
-          "Hai già inviato diversi messaggi. Riprova tra un'ora o scrivimi direttamente via email.",
+        message: "Hai già inviato diversi messaggi. Riprova tra un'ora oppure scrivimi direttamente via email.",
       };
     }
   }
@@ -102,11 +102,12 @@ export async function sendContactMessage(
     console.error("[contact] salvataggio fallito", error);
     return {
       status: "error",
-      message: "Si è verificato un errore. Riprova tra poco o scrivimi direttamente via email.",
+      message: "Si è verificato un errore. Riprova tra qualche minuto oppure scrivimi direttamente via email.",
     };
   }
 
-  // 6. Notifica email dopo aver risposto all'utente
+  // 6. Notifica email DOPO aver risposto all'utente: l'invio SMTP (1-2 secondi)
+  //    non rallenta il form. L'esito viene salvato sul messaggio.
   if (!tooFast) {
     after(async () => {
       try {
@@ -121,6 +122,13 @@ export async function sendContactMessage(
           where: { id: messageId },
           data: { notifyError: String(error).slice(0, 500) },
         });
+      }
+
+      // Conferma al visitatore: se fallisce non blocca nulla (il messaggio è già salvato)
+      try {
+        await sendContactConfirmation(data);
+      } catch (error) {
+        console.error("[contact] email di conferma fallita", error);
       }
     });
   }

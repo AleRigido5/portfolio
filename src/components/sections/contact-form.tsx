@@ -141,7 +141,7 @@ export function ContactForm() {
             required
             minLength={CONTACT_LIMITS.message.min}
             maxLength={CONTACT_LIMITS.message.max}
-            placeholder="Raccontami il progetto: obiettivi, tempi, cosa ti serve…"
+            placeholder="Descrivi il progetto: obiettivi, tempistiche ed esigenze principali…"
             aria-invalid={!!errorOf("message")}
             aria-describedby={errorOf("message") ? "contact-message-error" : undefined}
             className={`${inputClass} min-h-36 resize-y`}
@@ -174,8 +174,8 @@ export function ContactForm() {
             className="mt-0.5 size-4 shrink-0 cursor-pointer rounded border-border accent-[var(--accent)]"
           />
           <label htmlFor="contact-consent" className="cursor-pointer text-sm leading-relaxed text-muted">
-            Acconsento al trattamento dei dati inseriti al solo scopo di ricevere una
-            risposta. I dati non vengono ceduti a terzi.
+            Acconsento al trattamento dei miei dati personali al solo fine di
+            ricevere una risposta alla mia richiesta.
           </label>
         </div>
         {errorOf("consent") && (

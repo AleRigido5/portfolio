@@ -64,6 +64,11 @@ export function Hero() {
           <span className="whitespace-nowrap">
             <span className="relative inline-block text-accent">
               su misura
+              {/* Evidenziatore che si "stende" sotto le parole */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-[0.08em] -z-10 h-[0.32em] origin-left rounded-sm bg-accent/20 motion-safe:animate-highlight"
+              />
             </span>
             ,
           </span>{" "}
@@ -74,9 +79,9 @@ export function Hero() {
           className="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted motion-safe:animate-fade-up"
           style={{ animationDelay: "80ms" }}
         >
-          Progetto e realizzo applicazioni web complete: backend solidi con
-          PHP, Laravel e MySQL, interfacce moderne con React e Next.js. Dal
-          database al deploy, con attenzione a prestazioni e dettagli.
+          Realizzo applicazioni web complete: la parte server con PHP, Laravel
+          e MySQL, le interfacce con React e Next.js. Seguo ogni progetto dal
+          database alla messa online, con cura per le prestazioni e i dettagli.
         </p>
 
         {/* Call to action */}
@@ -116,7 +121,7 @@ export function Hero() {
           className="mt-16 text-xs font-medium tracking-wider text-muted uppercase motion-safe:animate-fade-up"
           style={{ animationDelay: "240ms" }}
         >
-          {/* Stack principale */}
+          Tecnologie che uso
         </p>
 
         {/* Elenco per screen reader: il nastro visivo è decorativo */}
@@ -127,7 +132,7 @@ export function Hero() {
         </ul>
       </div>
 
-      {/* Nastro delle tecnologie a tutta larghezza dello schermo (si ferma all'hover) */}
+      {/* Nastro delle tecnologie a tutta larghezza dello schermo */}
       <div
         aria-hidden="true"
         // mask-image: le icone sfumano entrando ed uscendo ai bordi dello schermo

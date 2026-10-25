@@ -19,7 +19,7 @@ export const contactSchema = z.object({
     .string("Inserisci la tua email.")
     .trim()
     .toLowerCase()
-    .max(CONTACT_LIMITS.email.max, "L'email è troppo lunga.")
+    .max(CONTACT_LIMITS.email.max, "L'indirizzo email è troppo lungo.")
     .pipe(z.email("Inserisci un indirizzo email valido.")),
   subject: z
     .string()
@@ -32,7 +32,7 @@ export const contactSchema = z.object({
     .trim()
     .min(CONTACT_LIMITS.message.min, "Il messaggio deve avere almeno 10 caratteri.")
     .max(CONTACT_LIMITS.message.max, "Il messaggio può avere al massimo 5000 caratteri."),
-  consent: z.literal("on", "Serve il consenso per poterti rispondere."),
+  consent: z.literal("on", "Per inviare il messaggio è necessario acconsentire al trattamento dei dati."),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

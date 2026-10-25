@@ -7,7 +7,7 @@ export const siteConfig = {
   name: "Alessandro Rigido",
   role: "Full-stack Web Developer",
   description:
-    "Sviluppatore web full-stack specializzato in PHP/Laravel, database e web app moderne con React e Next.js. Gestionali, siti e applicazioni su misura.",
+    "Sviluppatore web full-stack: realizzo gestionali, web app e siti su misura con PHP, Laravel e MySQL, e interfacce moderne con React e Next.js.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   locale: "it_IT",
   email: "alessandro.designstudio@gmail.com",
@@ -22,8 +22,8 @@ export const siteConfig = {
     "gestionali su misura",
   ],
   links: {
-    github: "https://github.com/AleRigido5",
-    // linkedin: "https://www.linkedin.com/in/tuo-profilo",
+    github: "https://github.com/tuo-utente",
+    linkedin: "https://www.linkedin.com/in/tuo-profilo",
   },
   // "/#..." invece di "#..." così i link funzionano anche dalle pagine di dettaglio
   nav: [

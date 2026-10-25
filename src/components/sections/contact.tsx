@@ -9,8 +9,8 @@ const details = [
     icon: <path d="M3 7l9 6 9-6M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />,
   },
   {
-    label: "Dove lavoro",
-    value: "Italia · anche da remoto",
+    label: "Sede",
+    value: "Italia · disponibile anche da remoto",
     icon: (
       <>
         <path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z" />
@@ -44,9 +44,9 @@ export function Contact() {
             Parliamo del tuo progetto
           </h2>
           <p className="mt-4 text-base leading-relaxed text-pretty text-muted">
-            Hai bisogno di un gestionale, di una web app o di un sito su misura?
-            Raccontami cosa ti serve: ti rispondo con una prima valutazione e
-            i passi per partire.
+            Ti serve un gestionale, una web app o un sito su misura? Descrivimi
+            la tua esigenza: ti risponderò con una prima valutazione e i passi
+            per iniziare.
           </p>
 
           <ul className="mt-10 space-y-5">

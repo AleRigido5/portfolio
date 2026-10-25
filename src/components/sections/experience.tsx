@@ -32,8 +32,8 @@ export async function Experience() {
             Percorso professionale
           </h2>
           <p className="mt-4 text-base leading-relaxed text-pretty text-muted">
-            Software usato ogni giorno in azienda: dalle prenotazioni online alla
-            gestione amministrativa, progettato e sviluppato dal database
+            Software utilizzato ogni giorno in azienda, dalle prenotazioni online
+            alla gestione amministrativa: progettato e sviluppato dal database
             all&apos;interfaccia.
           </p>
         </div>
@@ -131,7 +131,7 @@ function TimelineItem({ item, isLast }: { item: ExperienceItem; isLast: boolean 
         {item.highlights.length > 0 && (
           <>
             <h4 className="mt-6 text-xs font-medium tracking-wider text-muted uppercase">
-              Cosa ho realizzato
+              Principali attività
             </h4>
             <ul className="mt-3 space-y-2.5">
               {item.highlights.map((highlight) => (

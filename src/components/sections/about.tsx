@@ -3,20 +3,20 @@ import { getSkillGroups } from "@/lib/data/technologies";
 // Come lavoro: testo statico, da personalizzare
 const principles = [
   {
-    title: "Dal dato all'interfaccia",
-    text: "Parto dalla struttura del database e dalle regole di business, poi costruisco API e interfacce sopra fondamenta solide.",
+    title: "Dai dati all'interfaccia",
+    text: "Parto dalla struttura del database e dalle esigenze del cliente, poi sviluppo la logica e le interfacce su basi solide.",
   },
   {
-    title: "Codice tipizzato e manutenibile",
-    text: "TypeScript, convenzioni chiare e componenti riutilizzabili: il progetto resta facile da estendere anche dopo mesi.",
+    title: "Codice chiaro e manutenibile",
+    text: "TypeScript, convenzioni coerenti e componenti riutilizzabili, perché il progetto resti facile da modificare ed estendere nel tempo.",
   },
   {
     title: "Prestazioni e accessibilità",
-    text: "Pagine leggere, immagini ottimizzate e interfacce usabili da tastiera e screen reader, misurate con Lighthouse.",
+    text: "Pagine leggere, immagini ottimizzate e interfacce utilizzabili anche da tastiera e con screen reader, verificate con Lighthouse.",
   },
   {
-    title: "Rilascio e manutenzione",
-    text: "Deploy, migrazioni e aggiornamenti gestiti con cura, con un rapporto diretto e continuo con il cliente.",
+    title: "Messa online e assistenza",
+    text: "Pubblicazione, aggiornamenti e manutenzione gestiti con cura, mantenendo un rapporto diretto con il cliente.",
   },
 ];
 
@@ -51,22 +51,22 @@ export async function About() {
             id="about-title"
             className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
           >
-            Sviluppatore full-stack, per progetti web completi.
+            Sviluppatore full-stack, dal database all&apos;interfaccia.
           </h2>
 
           <div className="mt-6 space-y-4 text-base leading-relaxed text-pretty text-muted">
             <p>
-              Sono Alessandro, sviluppatore web full-stack. Lavoro soprattutto
+              Sono Alessandro, sviluppatore web full-stack. Lavoro principalmente
               con <strong className="font-medium text-foreground">PHP e Laravel</strong>{" "}
-              e con i database relazionali, e realizzo interfacce moderne con{" "}
+              e con database relazionali come MySQL; per le interfacce utilizzo{" "}
               <strong className="font-medium text-foreground">React e Next.js</strong>.
             </p>
             <p>
-              Progetto e sviluppo gestionali, web app e siti su misura per aziende:
-              dalla fatturazione alla logistica, dalle prenotazioni online ai
-              pannelli di amministrazione. Seguo ogni progetto dall&apos;analisi
-              al deploy, con un&apos;attenzione particolare a chiarezza del
-              codice, prestazioni e semplicità d&apos;uso.
+              Sviluppo gestionali, web app e siti su misura per le aziende:
+              fatturazione, logistica, prenotazioni online e pannelli di
+              amministrazione. Seguo ogni progetto dall&apos;analisi alla messa
+              online, con particolare attenzione alla chiarezza del codice, alle
+              prestazioni e alla semplicità d&apos;uso.
             </p>
           </div>
 

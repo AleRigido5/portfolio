@@ -31,11 +31,11 @@ export async function Projects() {
             id="projects-title"
             className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
           >
-            Lavori selezionati
+            Progetti selezionati
           </h2>
           <p className="mt-4 text-base leading-relaxed text-pretty text-muted">
-            Gestionali, web app e siti realizzati per aziende e clienti privati.
-            Filtra per tecnologia per vedere come le uso nei progetti reali.
+            Gestionali, web app e siti realizzati per aziende e privati. Usa i
+            filtri per vedere i progetti in base alla tecnologia utilizzata.
           </p>
         </div>
 
