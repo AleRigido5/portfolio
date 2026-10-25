@@ -56,7 +56,6 @@ export function WaveDivider() {
 
       {/* Punto centrale con alone */}
       <span className="absolute top-1/2 left-1/2 flex size-2.5 -translate-x-1/2 -translate-y-1/2">
-        <span className="absolute inset-0 rounded-full bg-accent/40 motion-safe:animate-ping [animation-duration:2.5s]" />
         <span className="relative size-2.5 rounded-full border-2 border-accent bg-background" />
       </span>
     </div>
