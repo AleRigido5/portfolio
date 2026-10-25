@@ -26,7 +26,7 @@ export async function Projects() {
     >
       <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:py-32">
         <div className="reveal max-w-2xl">
-          <p className="font-mono text-sm text-accent">02 — Progetti</p>
+          <p className="font-mono text-sm text-accent">03 — Progetti</p>
           <h2
             id="projects-title"
             className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl"

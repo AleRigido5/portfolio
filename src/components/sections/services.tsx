@@ -26,8 +26,8 @@ const services = [
     ),
   },
   {
-    title: "Prenotazioni e vendite online",
-    text: "Sistemi di prenotazione con calendario delle disponibilità e negozi online semplici da gestire.",
+    title: "Prenotazioni",
+    text: "Sistemi di prenotazione con calendario delle disponibilità semplici da gestire.",
     icon: (
       <>
         <rect x="3" y="5" width="18" height="16" rx="2" />
