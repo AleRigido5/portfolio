@@ -13,8 +13,13 @@ async function CurrentYear() {
 
 const socialLinks = [
   { label: "GitHub", href: siteConfig.links.github, external: true },
-  // { label: "LinkedIn", href: siteConfig.links.linkedin, external: true },
+  { label: "LinkedIn", href: siteConfig.links.linkedin, external: true },
   { label: "Email", href: `mailto:${siteConfig.email}`, external: false },
+].filter((link) => !link.href.includes("tuo-")); // niente link segnaposto
+
+const legalLinks = [
+  { label: "Privacy policy", href: siteConfig.privacyPolicyUrl },
+  { label: "Cookie policy", href: siteConfig.cookiePolicyUrl },
 ];
 
 export function Footer() {
@@ -28,6 +33,22 @@ export function Footer() {
         </p>
 
         <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+          {/* Classi iubenda: lo script (caricato nel layout) gestisce i link alle policy.
+              "iubenda-nostyle" mantiene lo stile del sito invece del pulsante di iubenda */}
+          {legalLinks.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                title={link.label}
+                target="_blank"
+                rel="noopener"
+                className="iubenda-noiframe iubenda-embed iubenda-nostyle rounded-sm transition-colors hover:text-foreground"
+              >
+                {link.label}
+                <span className="sr-only"> (si apre in una nuova scheda)</span>
+              </a>
+            </li>
+          ))}
           {socialLinks.map((link) => (
             <li key={link.label}>
               <a
