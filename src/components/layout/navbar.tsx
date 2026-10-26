@@ -19,7 +19,7 @@ export function Navbar() {
         <Link href="/" className="group flex items-center gap-2.5 rounded-md">
           {/* Tema chiaro: visibile, nascosta in tema scuro */}
           <Image
-            src="/brand/icona-chiara.svg"
+            src="/public/brand/icona-chiara.svg"
             alt=""
             width={32}
             height={32}
@@ -29,7 +29,7 @@ export function Navbar() {
           />
           {/* Tema scuro: nascosta in tema chiaro */}
           <Image
-            src="/brand/icona-scura.svg"
+            src="/public/brand/icona-scura.svg"
             alt=""
             width={32}
             height={32}
