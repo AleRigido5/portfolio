@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 
 import { sectionIdFromHref, useActiveSection } from "@/hooks/use-active-section";
 import { siteConfig, type NavItem } from "@/lib/site";
+import { BrandIcon } from "./brand-icon";
 
 // true solo nel browser: il pannello viene montato nel <body> tramite portal.
 // Serve perché l'header ha backdrop-blur, che "intrappola" gli elementi position: fixed
@@ -133,9 +134,13 @@ export function MobileMenu({ items }: { items: readonly NavItem[] }) {
               }`}
             >
               <div className="flex h-16 items-center justify-between border-b border-border px-5">
-                <p id={titleId} className="font-mono text-sm font-semibold">
-                  Menu
-                </p>
+                {/* Logo {AR} + titolo del pannello (letto dagli screen reader come "Menu") */}
+                <div className="flex items-center gap-2.5">
+                  <BrandIcon />
+                  <p id={titleId} className="text-sm font-semibold tracking-tight">
+                    Menu
+                  </p>
+                </div>
                 <button
                   type="button"
                   onClick={() => close()}

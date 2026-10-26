@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { BrandIcon } from "./brand-icon";
 import { siteConfig } from "@/lib/site";
 import { DesktopNav } from "./desktop-nav";
 import { MobileMenu } from "./mobile-menu";
@@ -14,19 +15,17 @@ export function Navbar() {
         aria-label="Navigazione principale"
         className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"
       >
-        {/* Logo */}
-        <Link
-          href="/"
-          className="group rounded-md font-mono text-sm font-semibold tracking-tight"
-        >
-          <span aria-hidden="true">
-            <span className="inline-block text-accent transition-transform duration-200 group-hover:-translate-x-0.5 motion-reduce:transition-none">
-              &lt;
-            </span>
-            AR
-            <span className="inline-block text-accent transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none">
-              /&gt;
-            </span>
+        {/* Logo: icona {AR} (chiara o scura in base al tema) + nome */}
+        <Link href="/" className="group flex items-center gap-2.5 rounded-md">
+          <BrandIcon
+            priority
+            className="transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none"
+          />
+          <span
+            aria-hidden="true"
+            className="text-[0.95rem] font-semibold tracking-tight text-foreground"
+          >
+            {siteConfig.name}
           </span>
           <span className="sr-only">{siteConfig.name}, torna alla home</span>
         </Link>
