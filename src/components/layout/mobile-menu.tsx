@@ -154,9 +154,6 @@ export function MobileMenu({ items }: { items: readonly NavItem[] }) {
                     unoptimized
                     className="hidden size-8 shrink-0 dark:block"
                   />
-                  <p id={titleId} className="text-sm font-semibold tracking-tight">
-                    Menu
-                  </p>
                 </div>
                 <button
                   type="button"
