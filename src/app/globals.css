@@ -202,7 +202,7 @@
 
 /* ---------------------------------------------------------------
    View Transitions: morphing delle card quando cambi filtro
-   e cambio tema con cerchio che si espande dal pulsante
+   e dissolvenza leggera quando cambi tema
    --------------------------------------------------------------- */
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -213,8 +213,22 @@
   animation-duration: 450ms;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* Durante il cambio tema le card non devono animarsi per conto loro */
-.theme-transition * {
+
+/* Cambio tema: il nuovo tema sfuma sopra il vecchio.
+   Si anima solo l'opacità di un'unica immagine → lavora la GPU, niente scatti */
+html.theme-transition::view-transition-new(root) {
+  animation: theme-fade 280ms ease-out both;
+}
+@keyframes theme-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Durante il cambio tema le card non devono animarsi per conto loro.
+   Selettore mirato (solo gli elementi con un nome di transizione) invece di "*":
+   con "*" il browser ricalcolava lo stile di TUTTA la pagina → era il piccolo blocco */
+.theme-transition [style*="view-transition-name"] {
   view-transition-name: none !important;
 }
 @media (prefers-reduced-motion: reduce) {

@@ -14,7 +14,7 @@ function applyTheme(next: "light" | "dark") {
 // Le icone si alternano solo via CSS (dark:hidden / dark:block):
 // niente stato React, quindi nessun errore di idratazione e nessun flash
 export function ThemeToggle() {
-  function toggleTheme(event: React.MouseEvent<HTMLButtonElement>) {
+  function toggleTheme() {
     const root = document.documentElement;
     const next = root.classList.contains("dark") ? "light" : "dark";
 
@@ -24,35 +24,10 @@ export function ThemeToggle() {
       return;
     }
 
-    // Il nuovo tema si espande con un cerchio che parte dal pulsante
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    const radius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y),
-    );
-
+    // Dissolvenza: il nuovo tema compare sopra il vecchio (solo opacità → fluida anche su mobile).
+    // La classe limita le animazioni del cambio tema (vedi globals.css)
     root.classList.add("theme-transition");
     const transition = document.startViewTransition(() => applyTheme(next));
-
-    transition.ready
-      .then(() => {
-        root.animate(
-          {
-            clipPath: [
-              `circle(0px at ${x}px ${y}px)`,
-              `circle(${radius}px at ${x}px ${y}px)`,
-            ],
-          },
-          {
-            duration: 550,
-            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-            pseudoElement: "::view-transition-new(root)",
-          },
-        );
-      })
-      .catch(() => {});
 
     transition.finished.finally(() => root.classList.remove("theme-transition"));
   }
