@@ -29,8 +29,10 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   images: {
-    // AVIF dove supportato (più leggero), altrimenti WebP
-    formats: ["image/avif", "image/webp"],
+    // Solo WebP: con gli screenshot (pieni di testo) l'AVIF sfoca le scritte
+    formats: ["image/webp"],
+    // Qualità consentite per next/image (Next 16 accetta solo quelle elencate qui)
+    qualities: [75, 90],
     // Le immagini ottimizzate restano in cache 30 giorni
     minimumCacheTTL: 60 * 60 * 24 * 30,
     // Larghezze generate: coprono card (368px) e schermi fino a 2x/3x

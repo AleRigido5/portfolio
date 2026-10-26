@@ -4,7 +4,9 @@ import type { ProjectCardData } from "@/lib/data/projects";
 
 // Le card stanno in griglia: 1 colonna su mobile, 2 da sm, 3 da lg.
 // "sizes" dice al browser quale larghezza scaricare → immagini mai sovradimensionate
-const IMAGE_SIZES = "(min-width: 1024px) 368px, (min-width: 640px) 50vw, 100vw";
+// Il browser scarica un'immagine circa il doppio della card: gli screenshot,
+// pieni di testo piccolo, restano nitidi anche ridotti (e sugli schermi retina)
+const IMAGE_SIZES = "(min-width: 1024px) 736px, (min-width: 640px) 100vw, 200vw";
 
 export function ProjectCard({
   project,
@@ -27,9 +29,10 @@ export function ProjectCard({
             alt={project.cover.alt}
             fill
             sizes={IMAGE_SIZES}
+            quality={90}
             placeholder={project.cover.blurDataURL ? "blur" : "empty"}
             blurDataURL={project.cover.blurDataURL ?? undefined}
-            className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+            className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
         ) : (
           <CoverPlaceholder title={project.title} />

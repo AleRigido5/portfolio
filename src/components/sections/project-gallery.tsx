@@ -90,6 +90,7 @@ export function ProjectGallery({
                 width={project.cover.width}
                 height={project.cover.height}
                 sizes="(min-width: 1088px) 1024px, 100vw"
+                quality={90}
                 placeholder={project.cover.blurDataURL ? "blur" : "empty"}
                 blurDataURL={project.cover.blurDataURL ?? undefined}
                 className="block h-auto w-full"
