@@ -42,12 +42,16 @@ const jsonLd = {
       name: `${siteConfig.name} – Sviluppo web`,
       url: siteConfig.url,
       image: `${siteConfig.url}/opengraph-image`,
+      // Logo {AR} (public/brand/logo-ar-512.png): Google può mostrarlo nei risultati
+      logo: `${siteConfig.url}/brand/logo-ar-512.png`,
       email: siteConfig.email,
       description: siteConfig.description,
       founder: { "@id": personId },
       areaServed: siteConfig.area
         ? [{ "@type": "Place", name: siteConfig.area }, { "@type": "Country", name: "Italia" }]
         : { "@type": "Country", name: "Italia" },
+      // Ternario e non "&&": con area = "" l'espressione varrebbe "" (una stringa),
+      // e TypeScript non permette lo spread di una stringa
       ...(siteConfig.area
         ? { address: { "@type": "PostalAddress", addressLocality: siteConfig.area, addressCountry: "IT" } }
         : {}),
