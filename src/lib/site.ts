@@ -10,7 +10,7 @@ export const siteConfig = {
   title: "Alessandro Rigido | Sviluppatore Web Full-stack",
   // Descrizione su Google (max ~155 caratteri): cosa fai, con cosa, e un invito all'azione
   description:
-    "Sviluppatore web full-stack: siti web, web app e gestionali su misura per aziende e professionisti, con Laravel, React e Next.js. Contattami per il tuo progetto.",
+    "Sviluppatore web full-stack. Progetto e realizzo siti web, web app e gestionali su misura per aziende e attività locali. Scopri i miei lavori",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
   locale: "it_IT",
   email: "alessandro.designstudio@gmail.com",
