@@ -37,12 +37,6 @@ export function Navbar() {
             priority
             className="hidden size-8 shrink-0 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none dark:block"
           />
-          <span
-            aria-hidden="true"
-            className="text-[0.95rem] font-semibold tracking-tight text-foreground"
-          >
-            {siteConfig.name}
-          </span>
           <span className="sr-only">{siteConfig.name}, torna alla home</span>
         </Link>
 
