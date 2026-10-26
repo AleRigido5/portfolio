@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import { BrandIcon } from "./brand-icon";
 import { siteConfig } from "@/lib/site";
 import { DesktopNav } from "./desktop-nav";
 import { MobileMenu } from "./mobile-menu";
@@ -15,11 +15,27 @@ export function Navbar() {
         aria-label="Navigazione principale"
         className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"
       >
-        {/* Logo: icona {AR} (chiara o scura in base al tema) + nome */}
+        {/* Logo: icona {AR} chiara o scura in base al tema + nome */}
         <Link href="/" className="group flex items-center gap-2.5 rounded-md">
-          <BrandIcon
+          {/* Tema chiaro: visibile, nascosta in tema scuro */}
+          <Image
+            src="/brand/icona-chiara.svg"
+            alt=""
+            width={32}
+            height={32}
+            unoptimized
             priority
-            className="transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none"
+            className="size-8 shrink-0 rounded-[7px] ring-1 ring-border transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none dark:hidden"
+          />
+          {/* Tema scuro: nascosta in tema chiaro */}
+          <Image
+            src="/brand/icona-scura.svg"
+            alt=""
+            width={32}
+            height={32}
+            unoptimized
+            priority
+            className="hidden size-8 shrink-0 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none dark:block"
           />
           <span
             aria-hidden="true"
