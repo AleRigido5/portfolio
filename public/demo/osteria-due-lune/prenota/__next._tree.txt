@@ -3,6 +3,6 @@
 :HL["/demo/osteria-due-lune/_next/static/media/7d78925e89801896-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/demo/osteria-due-lune/_next/static/css/e7b03a63bf0576b6.css","style"]
 3:[["children",{"s":"__PAGE__","h":160}]]
-2:[["children",{"s":"prenota","h":96,"c":"$Q3"}]]
-1:[["children",{"s":"(site)","h":96,"c":"$Q2"}]]
-0:{"b":"tlr4KZHZxSyzxrTRXt7qp","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+2:[["children",{"s":"prenota","h":64,"c":"$Q3"}]]
+1:[["children",{"s":"(site)","h":32,"c":"$Q2"}]]
+0:{"b":"7wQnXgmXrIzyt2SPKviDj","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
