@@ -1,0 +1,35 @@
+1:"$Sreact.fragment"
+2:I[4359,[],""]
+3:I[8843,[],""]
+4:"static/chunks/518-c6ad75ff02ebdd46.js"
+5:"static/chunks/app/(site)/page-18248c188b16c30f.js"
+6:I[1518,["518","$4","13","$5"],""]
+a:"static/chunks/app/admin/layout-2302cab3e6112c26.js"
+b:I[3198,["518","$4","581","$a"],"AdminNav"]
+11:"static/chunks/app/admin/menu/page-aa2af5deb2a59f0d.js"
+12:I[702,["836","$11"],"MenuDemo"]
+13:I[5134,[],"OutletBoundary"]
+14:"$Sreact.suspense"
+17:"ViewportBoundary"
+18:I[5134,[],"$17"]
+19:"MetadataBoundary"
+1a:I[5134,[],"$19"]
+1b:I[8491,[],"IconMark"]
+:HL["/demo/osteria-due-lune/_next/static/css/24ea0088fb9290fc.css","style"]
+8:X
+f:X
+f:C
+10:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","$L12",null,{}],null,["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}],"p":"$@16","v":null,"s":"$8"}}]]
+d:[["children",{"s":"menu","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"p":"$@e","v":"$f","s":"$8"},"c":"$Q10"}]]
+9:[["children",{"s":"admin","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","div",null,{"className":"flex min-h-dvh flex-1 flex-col bg-cream","children":[["$","p",null,{"className":"bg-ink px-4 py-2 text-center text-xs text-cream/90","children":"Demo dell'area riservata: nella versione completa si accede con password e le modifiche vengono salvate nel database. Qui puoi provare i pulsanti: al ricaricamento tutto torna come prima."}],["$","$Lb",null,{}],["$","main",null,{"className":"mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6","children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]}]]}]]}],"p":"$@c","v":null,"s":"$8"},"c":"$Qd"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/demo/osteria-due-lune/_next/static/css/24ea0088fb9290fc.css","precedence":"next"}]],["$","html",null,{"lang":"it","className":"__variable_5c909f __variable_6c78a1 antialiased","children":["$","body",null,{"className":"flex min-h-dvh flex-col font-sans","children":["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}],"notFound":[["$","main",null,{"className":"flex flex-1 flex-col items-center justify-center px-4 py-24 text-center","children":[["$","svg",null,{"viewBox":"0 0 40 40","aria-hidden":"true","className":"size-14","children":[["$","defs",null,{"children":["$","mask",null,{"id":"_S_1_","children":[["$","rect",null,{"width":"40","height":"40","fill":"#fff"}],["$","circle",null,{"cx":"31","cy":"15","r":"8.5","fill":"#000"}]]}]}],["$","circle",null,{"cx":"14","cy":"22","r":"10","fill":"var(--gold)"}],["$","circle",null,{"cx":"26","cy":"18","r":"9.5","fill":"var(--terracotta)","mask":"url(#_S_1_)"}]]}],["$","h1",null,{"className":"mt-6 font-serif text-5xl font-medium","children":"Pagina non trovata"}],["$","p",null,{"className":"mt-3 text-muted","children":"La pagina che cerchi non esiste o è stata spostata."}],["$","$L6",null,{"href":"/","className":"mt-8 rounded-full bg-olive px-6 py-3 text-sm font-medium text-paper hover:bg-ink","children":"Torna alla home"}]]}],[]]}]}]}]]}],"p":"$@7","v":null,"s":"$8"},"c":"$Q9"},"h":{"r":["$","$1","h",{"children":[null,["$","$L18",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f6f0e6"}]]}],["$","$L1a",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$14",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Menù · Area riservata (demo)"}],["$","meta","1",{"name":"description","content":"Osteria di cucina pugliese nel borgo antico: pasta fatta a mano, verdure dell'orto e vini del territorio. Prenota il tuo tavolo online."}],["$","meta","2",{"name":"robots","content":"noindex, nofollow"}],["$","meta","3",{"property":"og:title","content":"Menù · Area riservata (demo)"}],["$","meta","4",{"property":"og:description","content":"Osteria di cucina pugliese nel borgo antico: pasta fatta a mano, verdure dell'orto e vini del territorio. Prenota il tuo tavolo online."}],["$","meta","5",{"property":"og:site_name","content":"Osteria Le Due Lune"}],["$","meta","6",{"property":"og:locale","content":"it_IT"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"Menù · Area riservata (demo)"}],["$","meta","10",{"name":"twitter:description","content":"Osteria di cucina pugliese nel borgo antico: pasta fatta a mano, verdure dell'orto e vini del territorio. Prenota il tuo tavolo online."}],["$","link","11",{"rel":"icon","href":"/demo/osteria-due-lune/icon.svg?46a089ba354526a8","type":"image/svg+xml","sizes":"any"}],["$","$L1b","12",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@1c","v":null,"s":"$8"}},"a":"$@1d","u":"$@1e","b":"6GBF5cJ0ImPeTi9EMMWMR"}
+15:null
+8:300
+1e:true
+8:C
+1d:0
+e:"$undefined"
+c:"$undefined"
+7:"$undefined"
+1c:"$undefined"
+16:"$undefined"

@@ -47,11 +47,26 @@ const nextConfig: NextConfig = {
     serverActions: { bodySizeLimit: "4mb" },
   },
 
+  // Demo statiche dei progetti, in public/demo/<nome>/.
+  // Gli indirizzi "puliti" (es. /demo/osteria-due-lune/menu) vengono serviti
+  // dal file index.html della cartella corrispondente.
+  async rewrites() {
+    return [
+      { source: "/demo/:project", destination: "/demo/:project/index.html" },
+      { source: "/demo/:project/:path([^.]*)", destination: "/demo/:project/:path/index.html" },
+    ];
+  },
+
   async headers() {
     return [
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        // Le demo dei progetti (attività di fantasia) non vanno su Google
+        source: "/demo/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
       {
         // Il pannello admin non deve mai essere indicizzato

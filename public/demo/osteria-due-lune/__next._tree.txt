@@ -1,0 +1,7 @@
+:HL["/demo/osteria-due-lune/_next/static/media/0aa34dc08e816e48-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/demo/osteria-due-lune/_next/static/media/6c596dfcddeca1e9-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/demo/osteria-due-lune/_next/static/media/7d78925e89801896-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/demo/osteria-due-lune/_next/static/css/24ea0088fb9290fc.css","style"]
+2:[["children",{"s":"__PAGE__","h":128}]]
+1:[["children",{"s":"(site)","h":32,"c":"$Q2"}]]
+0:{"b":"6GBF5cJ0ImPeTi9EMMWMR","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
