@@ -1,0 +1,8 @@
+:HL["/demo/osteria-due-lune/_next/static/media/0aa34dc08e816e48-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/demo/osteria-due-lune/_next/static/media/6c596dfcddeca1e9-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/demo/osteria-due-lune/_next/static/media/7d78925e89801896-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/demo/osteria-due-lune/_next/static/css/b1db2d5f59253ee7.css","style"]
+3:[["children",{"s":"__PAGE__","h":160}]]
+2:[["children",{"s":"prenotazioni","h":96,"c":"$Q3"}]]
+1:[["children",{"s":"admin","h":96,"c":"$Q2"}]]
+0:{"b":"Lbzdww-G82CYYhekOUbG_","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

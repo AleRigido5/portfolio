@@ -1,0 +1,33 @@
+1:"$Sreact.fragment"
+2:I[4359,[],""]
+3:I[8843,[],""]
+4:"static/chunks/518-c6ad75ff02ebdd46.js"
+5:"static/chunks/app/(site)/page-18248c188b16c30f.js"
+6:I[1518,["518","$4","13","$5"],""]
+8:"static/chunks/328-9457900fc3d37205.js"
+9:"static/chunks/app/admin/layout-509d7397887d4130.js"
+a:I[328,["518","$4","328","$8","581","$9"],"AdminShell"]
+e:"static/chunks/app/admin/prenotazioni/page-c22592dc40f4f620.js"
+f:"ReservationsTable"
+10:I[5756,["518","$4","328","$8","707","$e"],"$f"]
+11:I[5134,[],"OutletBoundary"]
+12:"$Sreact.suspense"
+14:"ViewportBoundary"
+15:I[5134,[],"$14"]
+17:"MetadataBoundary"
+18:I[5134,[],"$17"]
+1a:I[8605,[],"default",1]
+:HL["/demo/osteria-due-lune/_next/static/media/0aa34dc08e816e48-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/demo/osteria-due-lune/_next/static/media/6c596dfcddeca1e9-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/demo/osteria-due-lune/_next/static/media/7d78925e89801896-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/demo/osteria-due-lune/_next/static/css/b1db2d5f59253ee7.css","style"]
+c:X
+d:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":[["$","$L10",null,{}],null,["$","$L11",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@13"}]}]]}],"p":false,"v":null}}]]
+b:[["children",{"s":"prenotazioni","h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$c"},"c":"$Qd"}]]
+7:[["children",{"s":"admin","h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$La",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}]]}],"p":false,"v":null},"c":"$Qb"}]]
+0:{"P":null,"c":["","admin","prenotazioni",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/demo/osteria-due-lune/_next/static/css/b1db2d5f59253ee7.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"it","className":"__variable_5c909f __variable_6c78a1 antialiased","children":["$","body",null,{"className":"flex min-h-dvh flex-col font-sans","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"className":"flex flex-1 flex-col items-center justify-center px-4 py-24 text-center","children":[["$","svg",null,{"viewBox":"0 0 40 40","aria-hidden":"true","className":"size-14","children":[["$","defs",null,{"children":["$","mask",null,{"id":"_S_1_","children":[["$","rect",null,{"width":"40","height":"40","fill":"#fff"}],["$","circle",null,{"cx":"31","cy":"15","r":"8.5","fill":"#000"}]]}]}],["$","circle",null,{"cx":"14","cy":"22","r":"10","fill":"var(--gold)"}],["$","circle",null,{"cx":"26","cy":"18","r":"9.5","fill":"var(--terracotta)","mask":"url(#_S_1_)"}]]}],["$","h1",null,{"className":"mt-6 font-serif text-5xl font-medium","children":"Pagina non trovata"}],["$","p",null,{"className":"mt-3 text-muted","children":"La pagina che cerchi non esiste o è stata spostata."}],["$","$L6",null,{"href":"/","className":"mt-8 rounded-full bg-olive px-6 py-3 text-sm font-medium text-paper hover:bg-ink","children":"Torna alla home"}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],"p":false,"v":null},"c":"$Q7"},"h":{"r":["$","$1","h",{"children":[null,["$","$L15",null,{"children":"$L16"}],["$","$L18",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$12",null,{"name":"Next.Metadata","children":"$L19"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":false,"v":null}},"m":"$undefined","G":["$1a",[]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Lbzdww-G82CYYhekOUbG_"}
+c:C
+16:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f6f0e6"}]]
+1b:I[8491,[],"IconMark"]
+13:null
+19:[["$","title","0",{"children":"Prenotazioni · Area riservata (demo)"}],["$","meta","1",{"name":"description","content":"Osteria di cucina pugliese nel borgo antico: pasta fatta a mano, verdure dell'orto e vini del territorio. Prenota il tuo tavolo online."}],["$","meta","2",{"name":"robots","content":"noindex, nofollow"}],["$","meta","3",{"property":"og:title","content":"Prenotazioni · Area riservata (demo)"}],["$","meta","4",{"property":"og:description","content":"Osteria di cucina pugliese nel borgo antico: pasta fatta a mano, verdure dell'orto e vini del territorio. Prenota il tuo tavolo online."}],["$","meta","5",{"property":"og:site_name","content":"Osteria Le Due Lune"}],["$","meta","6",{"property":"og:locale","content":"it_IT"}],["$","meta","7",{"property":"og:type","content":"website"}],["$","meta","8",{"name":"twitter:card","content":"summary"}],["$","meta","9",{"name":"twitter:title","content":"Prenotazioni · Area riservata (demo)"}],["$","meta","10",{"name":"twitter:description","content":"Osteria di cucina pugliese nel borgo antico: pasta fatta a mano, verdure dell'orto e vini del territorio. Prenota il tuo tavolo online."}],["$","link","11",{"rel":"icon","href":"/demo/osteria-due-lune/icon.svg?46a089ba354526a8","type":"image/svg+xml","sizes":"any"}],["$","$L1b","12",{}]]
