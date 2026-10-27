@@ -11,6 +11,7 @@ import { contactSchema, type ContactState } from "@/lib/validations/contact-sche
 
 const RATE_LIMIT_MAX = 3; // messaggi massimi per IP...
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // ...in un'ora
+const GLOBAL_LIMIT_MAX = 20; // messaggi massimi in totale (tutti gli IP) in un'ora
 const MIN_FILL_TIME_MS = 3000; // un umano non compila il form in meno di 3 secondi
 
 const SUCCESS: ContactState = {
@@ -76,6 +77,19 @@ export async function sendContactMessage(
         message: "Hai già inviato diversi messaggi. Riprova tra un'ora oppure scrivimi direttamente via email.",
       };
     }
+  }
+
+  // 3b. Freno globale: se qualcuno falsifica l'IP per aggirare il limite,
+  //     il form si ferma comunque dopo 20 messaggi in un'ora (protegge anche
+  //     la casella Gmail che invia le conferme dal finire tra gli spammer)
+  const recentTotal = await prisma.contactMessage.count({
+    where: { createdAt: { gte: new Date(Date.now() - RATE_LIMIT_WINDOW_MS) } },
+  });
+  if (recentTotal >= GLOBAL_LIMIT_MAX) {
+    return {
+      status: "error",
+      message: "Il modulo è momentaneamente non disponibile. Scrivimi direttamente via email.",
+    };
   }
 
   // 4. Compilazione troppo veloce → probabile bot: salvato come SPAM, senza notifica

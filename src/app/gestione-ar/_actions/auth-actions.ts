@@ -2,7 +2,15 @@
 
 import { redirect } from "next/navigation";
 
-import { ADMIN_LOGIN_PATH, ADMIN_PATH, LOGIN_MAX_FAILURES, LOGIN_WINDOW_MS } from "@/lib/admin/config";
+import {
+  ADMIN_LOGIN_PATH,
+  ADMIN_PATH,
+  LOGIN_ATTEMPTS_RETENTION_MS,
+  LOGIN_MAX_FAILURES,
+  LOGIN_MAX_GLOBAL_FAILURES,
+  LOGIN_WINDOW_MS,
+  MESSAGES_RETENTION_MS,
+} from "@/lib/admin/config";
 import { getDummyHash, verifyPassword } from "@/lib/admin/password";
 import { createSession, destroySession, getClientIpHash } from "@/lib/admin/session";
 import { prisma } from "@/lib/prisma";
@@ -14,11 +22,14 @@ const INVALID = "Email o password non corretti.";
 export async function login(_prev: FormState, formData: FormData): Promise<FormState> {
   const ipHash = await getClientIpHash();
 
-  // 1. Troppi tentativi falliti di recente da questo IP → blocco temporaneo
-  const failures = await prisma.loginAttempt.count({
-    where: { ipHash, success: false, createdAt: { gte: new Date(Date.now() - LOGIN_WINDOW_MS) } },
-  });
-  if (failures >= LOGIN_MAX_FAILURES) {
+  // 1. Troppi tentativi falliti di recente → blocco temporaneo
+  //    (per questo IP, oppure in totale se qualcuno cambia IP a ogni tentativo)
+  const since = new Date(Date.now() - LOGIN_WINDOW_MS);
+  const [failures, globalFailures] = await Promise.all([
+    prisma.loginAttempt.count({ where: { ipHash, success: false, createdAt: { gte: since } } }),
+    prisma.loginAttempt.count({ where: { success: false, createdAt: { gte: since } } }),
+  ]);
+  if (failures >= LOGIN_MAX_FAILURES || globalFailures >= LOGIN_MAX_GLOBAL_FAILURES) {
     return { status: "error", message: "Troppi tentativi. Riprova tra 15 minuti." };
   }
 
@@ -39,8 +50,16 @@ export async function login(_prev: FormState, formData: FormData): Promise<FormS
 
   if (!user || !valid) return { status: "error", message: INVALID };
 
-  // 3. Sessione: pulizia di quelle scadute, poi una nuova
-  await prisma.adminSession.deleteMany({ where: { userId: user.id, expiresAt: { lt: new Date() } } });
+  // 3. Pulizia: sessioni scadute, tentativi di login vecchi e messaggi oltre i 12 mesi
+  //    (i dati personali non si tengono più del necessario: GDPR)
+  const now = Date.now();
+  await Promise.all([
+    prisma.adminSession.deleteMany({ where: { expiresAt: { lt: new Date(now) } } }),
+    prisma.loginAttempt.deleteMany({ where: { createdAt: { lt: new Date(now - LOGIN_ATTEMPTS_RETENTION_MS) } } }),
+    prisma.contactMessage.deleteMany({ where: { createdAt: { lt: new Date(now - MESSAGES_RETENTION_MS) } } }),
+  ]);
+
+  // 4. Nuova sessione
   await createSession(user.id);
   await prisma.adminUser.update({ where: { id: user.id }, data: { lastLoginAt: new Date() } });
 

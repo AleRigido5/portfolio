@@ -171,7 +171,9 @@ export function ContactForm() {
             type="checkbox"
             required
             aria-invalid={!!errorOf("consent")}
-            aria-describedby={errorOf("consent") ? "contact-consent-error" : undefined}
+            aria-describedby={
+              errorOf("consent") ? "contact-consent-note contact-consent-error" : "contact-consent-note"
+            }
             className="mt-0.5 size-4 shrink-0 cursor-pointer rounded border-border accent-[var(--accent)]"
           />
           <label htmlFor="contact-consent" className="cursor-pointer text-sm leading-relaxed text-muted">
@@ -189,8 +191,12 @@ export function ContactForm() {
             .
           </label>
         </div>
+        {/* Conservazione dei dati: i messaggi vengono cancellati in automatico dopo 12 mesi */}
+        <p id="contact-consent-note" className="mt-2 pl-7 text-xs leading-relaxed text-muted">
+          I dati inviati vengono usati solo per risponderti e conservati per massimo 12 mesi.
+        </p>
         {errorOf("consent") && (
-          <p id="contact-consent-error" className="mt-2 text-sm text-red-700 dark:text-red-400">
+          <p id="contact-consent-error" className="mt-2 pl-7 text-sm text-red-700 dark:text-red-400">
             {errorOf("consent")}
           </p>
         )}

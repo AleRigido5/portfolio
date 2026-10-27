@@ -13,6 +13,15 @@ const securityHeaders = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
   },
+  // Content Security Policy "di base": non tocca script e stili (nessun rischio di
+  // rompere il sito), ma blocca plugin, cambio della base degli URL, invio dei form
+  // verso altri domini e l'incorporamento del sito in iframe altrui
+  {
+    key: "Content-Security-Policy",
+    value: "frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'",
+  },
+  // Isola la finestra del sito da quelle aperte da altri siti
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
   // Forza HTTPS per 2 anni (ignorato in locale su http://localhost)
   {
     key: "Strict-Transport-Security",
