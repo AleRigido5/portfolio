@@ -18,13 +18,19 @@ const socialLinks = [
 ].filter((link) => !link.href.includes("tuo-")); // niente link segnaposto
 
 const legalLinks = [
-  { label: "Privacy policy", href: siteConfig.privacyPolicyUrl },
-  { label: "Cookie policy", href: siteConfig.cookiePolicyUrl },
+  { label: "Privacy Policy", href: siteConfig.privacyPolicyUrl },
+  { label: "Cookie Policy", href: siteConfig.cookiePolicyUrl },
 ];
 
 export function Footer() {
   return (
     <footer className="border-t border-border">
+      {/* Script ufficiale di iubenda (lo stesso del codice di integrazione).
+          React 19 lo inserisce nell'HTML della pagina, lo carica una sola volta
+          e in modo asincrono: non rallenta il sito. È lui che trasforma i link
+          con la classe "iubenda-embed" e che lo scanner di iubenda cerca. */}
+      <script src="https://cdn.iubenda.com/iubenda.js" async />
+
       {/* Mobile e tablet: tutto centrato e in colonna (testo sopra, link sotto).
           Da md in su: testo a sinistra e link a destra sulla stessa riga */}
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 text-center text-sm text-muted sm:px-6 md:flex-row md:justify-between md:text-left">
@@ -33,20 +39,21 @@ export function Footer() {
         </p>
 
         <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2">
-          {/* Classi iubenda: lo script (caricato nel layout) gestisce i link alle policy.
-              "iubenda-nostyle" mantiene lo stile del sito invece del pulsante di iubenda */}
+          {/* Pulsanti ufficiali iubenda: bianco con il tema chiaro, nero con lo scuro.
+              Ci sono entrambi nell'HTML, ma lo span con display:none nasconde quello
+              che non serve (anche agli screen reader, quindi niente link doppi). */}
           {legalLinks.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                title={link.label}
-                target="_blank"
-                rel="noopener"
-                className="iubenda-noiframe iubenda-embed iubenda-nostyle rounded-sm transition-colors hover:text-foreground"
-              >
-                {link.label}
-                <span className="sr-only"> (si apre in una nuova scheda)</span>
-              </a>
+            <li key={link.label} className="flex items-center">
+              <span className="dark:hidden">
+                <a href={link.href} title={link.label} className="iubenda-white iubenda-noiframe iubenda-embed">
+                  {link.label}
+                </a>
+              </span>
+              <span className="hidden dark:inline">
+                <a href={link.href} title={link.label} className="iubenda-black iubenda-noiframe iubenda-embed">
+                  {link.label}
+                </a>
+              </span>
             </li>
           ))}
           {socialLinks.map((link) => (
