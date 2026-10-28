@@ -13,7 +13,7 @@ export const CATEGORY_LABELS: Record<SkillCategory, string> = {
   BACKEND: "Backend",
   FRONTEND: "Frontend",
   DATABASE: "Database",
-  DEVOPS: "DevOps & Deploy",
+  DEVOPS: "Hostinger & Deploy",
   TOOL: "Strumenti",
 };
 

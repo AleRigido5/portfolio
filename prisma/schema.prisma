@@ -24,7 +24,7 @@ enum TechCategory {
   FRONTEND
   BACKEND
   DATABASE
-  HOSTINGER
+  DEVOPS
   TOOL
 }
 
