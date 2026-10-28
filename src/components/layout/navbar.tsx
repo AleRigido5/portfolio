@@ -6,6 +6,7 @@ import { DesktopNav } from "./desktop-nav";
 import { MobileMenu } from "./mobile-menu";
 import { ThemeToggle } from "./theme-toggle";
 
+
 // Server Component: logo e struttura sono HTML statico,
 // solo link (scroll-spy), menu mobile e toggle del tema sono client
 export function Navbar() {
