@@ -138,7 +138,7 @@ export function MobileMenu({ items }: { items: readonly NavItem[] }) {
                 <div className="flex items-center gap-2.5">
                   {/* Tema chiaro: visibile, nascosta in tema scuro */}
                   <Image
-                    src="/brand/icona-chiara.svg"
+                    src="/brand/icona-chiara-512.png"
                     alt=""
                     width={32}
                     height={32}
@@ -147,7 +147,7 @@ export function MobileMenu({ items }: { items: readonly NavItem[] }) {
                   />
                   {/* Tema scuro: nascosta in tema chiaro */}
                   <Image
-                    src="/brand/icona-scura.svg"
+                    src="/brand/icona-scura-512.png"
                     alt=""
                     width={32}
                     height={32}
