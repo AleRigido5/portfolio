@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 import { BackgroundGrid } from "@/components/layout/background-grid";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -70,13 +68,17 @@ const jsonLd = {
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      {/* Primo elemento focusabile: permette di saltare la navigazione da tastiera */}
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-accent-foreground"
-      >
-        Vai al contenuto principale
-      </a>
+      {/* Primo elemento focusabile: permette di saltare la navigazione da tastiera.
+          Sta dentro un <nav> perché ogni contenuto della pagina deve trovarsi in un
+          "landmark" (header, nav, main, footer…): così lo trovano anche gli screen reader */}
+      <nav aria-label="Accesso rapido">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-accent-foreground"
+        >
+          Vai al contenuto principale
+        </a>
+      </nav>
 
       <BackgroundGrid />
       <Navbar />
@@ -85,13 +87,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         {children}
       </main>
 
+      {/* Il footer carica anche lo script di iubenda (iubenda.js) */}
       <Footer />
       <PointerSpotlight />
-
-      {/* Script di iubenda per i link "Privacy policy" (richiesto dal piano Free).
-          lazyOnload: viene caricato solo quando la pagina è completamente pronta,
-          così non pesa sulla velocità del sito */}
-      <Script src="https://cdn.iubenda.com/iubenda.js" strategy="lazyOnload" />
 
       <script
         type="application/ld+json"
