@@ -34,6 +34,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  // Favicon dichiarate a mano: i file stanno in /public.
+  // Google richiede almeno 48x48 (meglio 192x192).
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
