@@ -23,6 +23,7 @@ export type SkillGroup = {
   items: { id: string; name: string }[];
 };
 
+
 /**
  * Competenze raggruppate per categoria.
  * "use cache": la query viene eseguita al build e il risultato riusato,
