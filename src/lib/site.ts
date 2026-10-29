@@ -13,7 +13,7 @@ export const siteConfig = {
     "Sviluppatore web full-stack. Progetto e realizzo siti web, web app e gestionali su misura per aziende e attività locali. Scopri i miei lavori",
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
   locale: "it_IT",
-  email: "alessandro.designstudio@gmail.com",
+  email: "alessandro.webdev26@gmail.com",
   // Privacy e cookie policy generate con iubenda
   privacyPolicyUrl: "https://www.iubenda.com/privacy-policy/48607351",
   cookiePolicyUrl: "https://www.iubenda.com/privacy-policy/48607351/cookie-policy",
