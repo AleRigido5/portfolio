@@ -10,7 +10,7 @@ const details = [
   },
   {
     label: "Sede",
-    value: "Italia · disponibile anche da remoto",
+    value: "Italia · da remoto",
     icon: (
       <>
         <path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z" />
