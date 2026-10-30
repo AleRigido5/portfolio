@@ -143,7 +143,7 @@ export function MobileMenu({ items }: { items: readonly NavItem[] }) {
                     width={48}
                     height={48}
                     unoptimized
-                    className="h-8 w-auto max-w-none shrink-0 rounded-[7px] object-contain ring-1 ring-border dark:hidden"
+                    className="h-8 w-auto max-w-none shrink-0 object-contain dark:hidden"
                   />
 
                   {/* Tema scuro */}
