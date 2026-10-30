@@ -136,23 +136,24 @@ export function MobileMenu({ items }: { items: readonly NavItem[] }) {
               <div className="flex h-16 items-center justify-between border-b border-border px-5">
                 {/* Logo {AR}: icona chiara o scura in base al tema + titolo del pannello */}
                 <div className="flex items-center gap-2.5">
-                  {/* Tema chiaro: visibile, nascosta in tema scuro */}
+                  {/* Tema chiaro */}
                   <Image
                     src="/brand/icona-chiara-512.png"
-                    alt=""
-                    width={32}
-                    height={32}
+                    alt="Logo"
+                    width={48}
+                    height={48}
                     unoptimized
-                    className="size-8 shrink-0 rounded-[7px] ring-1 ring-border dark:hidden"
+                    className="h-8 w-auto max-w-none shrink-0 rounded-[7px] object-contain ring-1 ring-border dark:hidden"
                   />
-                  {/* Tema scuro: nascosta in tema chiaro */}
+
+                  {/* Tema scuro */}
                   <Image
                     src="/brand/icona-scura-512.png"
-                    alt=""
-                    width={32}
-                    height={32}
+                    alt="Logo"
+                    width={48}
+                    height={48}
                     unoptimized
-                    className="hidden size-8 shrink-0 dark:block"
+                    className="hidden h-8 w-auto max-w-none shrink-0 object-contain dark:block"
                   />
                 </div>
                 <button
