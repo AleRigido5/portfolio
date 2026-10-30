@@ -20,22 +20,22 @@ export function Navbar() {
           {/* Tema chiaro: visibile, nascosta in tema scuro */}
           <Image
             src="/brand/icona-chiara-512.png"
-            alt=""
-            width={32}
-            height={32}
+            alt="Logo"
+            width={48}
+            height={48}
             unoptimized
             priority
-            className="size-8 shrink-0 rounded-[7px] ring-1 ring-border transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none dark:hidden"
+            className="size-12 shrink-0 object-contain transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none dark:hidden"
           />
           {/* Tema scuro: nascosta in tema chiaro */}
           <Image
             src="/brand/icona-scura-512.png"
-            alt=""
-            width={32}
-            height={32}
+            alt="Logo"
+            width={48}
+            height={48}
             unoptimized
             priority
-            className="hidden size-8 shrink-0 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none dark:block"
+            className="hidden size-12 shrink-0 object-contain transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none dark:block"
           />
           <span className="sr-only">{siteConfig.name}, torna alla home</span>
         </Link>
