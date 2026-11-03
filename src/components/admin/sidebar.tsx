@@ -26,14 +26,14 @@ export function AdminSidebar({ email, newMessages }: { email: string; newMessage
       <div className="flex h-14 items-center justify-between px-4 lg:h-16 lg:px-5">
         <Link href={ADMIN_PATH} className="font-mono text-sm font-semibold">
           <Image
-            src="/icona-chiara-512.png"
+            src="/brand/icona-chiara-512.png"
             alt="AR"
             width={32}
             height={32}
             className="size-8 dark:hidden"
           />
           <Image
-            src="/icona-scura-512.png"
+            src="/brand/icona-scura-512.png"
             alt="AR"
             width={32}
             height={32}
