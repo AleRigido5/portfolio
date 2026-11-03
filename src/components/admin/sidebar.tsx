@@ -31,18 +31,18 @@ export function AdminSidebar({ email, newMessages }: { email: string; newMessage
           <Image
             src="/brand/icona-chiara-512.png"
             alt="AR"
-            width={32}
-            height={32}
-            className="size-8 dark:hidden"
+            width={48}
+            height={48}
+            className="size-10 dark:hidden"
           />
           <Image
             src="/brand/icona-scura-512.png"
             alt="AR"
-            width={32}
-            height={32}
-            className="hidden size-8 dark:block"
+            width={48}
+            height={48}
+            className="hidden size-10 dark:block"
           />
-          <span className="ml-2 font-sans text-xs font-medium text-muted-foreground">
+          <span className="ml-2.5 font-sans text-xs font-medium text-muted">
             Admin
           </span>
         </Link>
