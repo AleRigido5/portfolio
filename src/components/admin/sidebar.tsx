@@ -31,20 +31,17 @@ export function AdminSidebar({ email, newMessages }: { email: string; newMessage
           <Image
             src="/brand/icona-chiara-512.png"
             alt="AR"
-            width={120}
-            height={40}
-            className="h-10 w-auto dark:hidden"
+            width={96}
+            height={32}
+            className="h-6 w-auto dark:hidden"
           />
           <Image
             src="/brand/icona-scura-512.png"
             alt="AR"
-            width={120}
-            height={40}
-            className="hidden h-10 w-auto dark:block"
+            width={96}
+            height={32}
+            className="hidden h-6 w-auto dark:block"
           />
-          <span className="ml-3 font-sans text-xs font-medium text-muted">
-            Admin
-          </span>
         </Link>
         <div className="lg:hidden">
           <ThemeToggle />
