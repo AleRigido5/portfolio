@@ -91,8 +91,14 @@ const FONT =
   "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 const MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
 
-/** Logo testuale {AR}: niente immagini, quindi visibile anche con le immagini bloccate. */
-const logo = `<span style="font-family:${MONO};font-size:20px;font-weight:700;letter-spacing:-0.5px;color:#ffffff;"><span style="color:${C.indigoLight};">{</span>AR<span style="color:${C.indigoLight};">}</span></span>`;
+/**
+ * Logo AR (versione per sfondi scuri) servito dal sito: public/brand/logo-email.png.
+ * PNG e non SVG perché Gmail e Outlook non mostrano gli SVG.
+ * File 192×96, mostrato a 64×32 così resta nitido sugli schermi ad alta densità.
+ * Se le immagini sono bloccate compare il testo alternativo "AR" in bianco.
+ */
+const LOGO_URL = `${SITE_URL.replace(/\/$/, "")}/brand/logo-email.png`;
+const logo = `<a href="${SITE_URL}" style="text-decoration:none;"><img src="${LOGO_URL}" width="64" height="32" alt="AR" style="display:block;width:64px;height:32px;border:0;outline:none;text-decoration:none;font-family:${MONO};font-size:20px;font-weight:700;line-height:32px;color:#ffffff;"></a>`;
 
 function layout(opts: { preheader: string; badge: string; body: string }) {
   const year = new Date().getFullYear();
