@@ -24,7 +24,10 @@ export function AdminSidebar({ email, newMessages }: { email: string; newMessage
   return (
     <aside className="sticky top-0 z-40 border-b border-border bg-surface/90 backdrop-blur lg:flex lg:h-dvh lg:flex-col lg:border-r lg:border-b-0">
       <div className="flex h-14 items-center justify-between px-4 lg:h-16 lg:px-5">
-        <Link href={ADMIN_PATH} className="font-mono text-sm font-semibold">
+        <Link 
+          href={ADMIN_PATH} 
+          className="flex items-center font-mono text-sm font-semibold"
+        >
           <Image
             src="/brand/icona-chiara-512.png"
             alt="AR"
@@ -39,7 +42,9 @@ export function AdminSidebar({ email, newMessages }: { email: string; newMessage
             height={32}
             className="hidden size-8 dark:block"
           />
-          <span className="ml-2 font-sans text-xs font-medium text-muted">Admin</span>
+          <span className="ml-2 font-sans text-xs font-medium text-muted-foreground">
+            Admin
+          </span>
         </Link>
         <div className="lg:hidden">
           <ThemeToggle />
